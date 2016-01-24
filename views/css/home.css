@@ -1,0 +1,10 @@
+.login-btn{
+    margin-top: 20px;
+}
+#login-email, #login-password {
+    width: 230px;
+}
+.email{
+    width: 230px;
+    margin: 0 auto;
+}
