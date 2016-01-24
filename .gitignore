@@ -1,10 +1,11 @@
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
+.htaccess
 
 # Folder config file
 Desktop.ini
-
+conf.php
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
 
