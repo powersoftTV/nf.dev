@@ -1,7 +1,7 @@
 <?PHP
 
 $_LANG["company_name"]["en"]="Company name";
-$_LANG["company_name"]["hy"]="Company name";
+$_LANG["company_name"]["hy"]="Ընկերության անունը";
 $_LANG["company_name"]["ru"]="название Компании";
 
 $_LANG["company_url"]["en"]="http://company.com/";

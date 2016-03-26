@@ -1,8 +1,8 @@
 <?php
     $db_host='localhost';
-	$db_user='admin';
+	$db_user='root';
 	$db_pass='123456';
-	$db_name='nf';
+	$db_name='nf.dev';
     
     $cookie_exp = time()+60*20; //20min
     $admin_email="markareno@gmail.com";
@@ -13,7 +13,7 @@
     $root_folder="/";
     $_root="";
     
-    $languages=array('en','ru','am');
+    $languages=array('en','ru','hy');
     $lang='en';
     $act='home';
     
