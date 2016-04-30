@@ -106,7 +106,7 @@
   background-color: #eedc94;
   background-repeat: repeat-x;
 
-  background-image: /*-khtml-gradient(linear, left top, left bottom, from(#fceec1), to(#eedc94));*/
+  /*background-image: -khtml-gradient(linear, left top, left bottom, from(#fceec1), to(#eedc94));*/
   background-image: -moz-linear-gradient(top, #fceec1, #eedc94);
   background-image: -ms-linear-gradient(top, #fceec1, #eedc94);
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fceec1), color-stop(100%, #eedc94));
