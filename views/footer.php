@@ -4,14 +4,17 @@
                 <p>&copy; 2016 <a href="http://powersoft.tv/">PowerSoft Labs</a></p>
             </footer>
     </div>
-    <script src="<?=$root_folder?>views/scripts/jquery.min.js"></script><?php //cdn <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> ?>
-    <script src="<?=$root_folder?>views/scripts/bootstrap.min.js"></script><?php //cdn <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script> ?>
-    <script src="<?=$root_folder?>views/scripts/bootstrap-select.min.js"></script><?php //cdn <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js"></script> ?>
-    <script src="<?=$root_folder?>views/scripts/bootstrap-datepicker.min.js"></script><?php //reference https://github.com/eternicode/bootstrap-datepicker 
-    //consider date and time picker of http://eonasdan.github.io/bootstrap-datetimepicker/Installing/
-?>
-    <!--<script src="//tinymce.cachefly.net/4.2/tinymce.min.js"></script>-->
-
+    <script type='text/javascript'>var lang='<?php echo $lang; ?>'</script>
+    <script type='text/javascript'>var user_id='<?php echo $_user['user_id']; ?>'</script>
+    <script type='text/javascript'>var ajax='<?php echo $root_folder.'ajax.php?'; ?>'</script>
+    <script type='text/javascript'>var root_folder='<?php echo $root_folder; ?>'</script>
+    <script src="<?=$root_folder?>views/scripts/jquery.min.js"></script>
+    <script src="<?=$root_folder?>views/scripts/bootstrap.min.js"></script>
+    <script src="<?=$root_folder?>views/scripts/bootstrap-select.min.js"></script>
+    <!--<script src="<?=$root_folder?>views/scripts/bootstrap-datepicker.min.js"></script>-->
+<?php if($_user['user_id'] && $act=='home'): ?>
+    <script type="text/javascript" src="<?=$root_folder?>views/scripts/tinymce/tinymce.min.js" ></script>
+<?php endif; ?>   
 	<script type="text/javascript" src="<?=$root_folder?>views/scripts/script.js?<?php echo $VERSION; ?>" ></script>
 <?php if( file_exists(__DIR__.'/scripts/'.$act.'.js') ): ?>
     <script type="text/javascript" src="<?=$root_folder?>views/scripts/<?php echo $act; ?>.js?<?php echo $VERSION; ?>" ></script>

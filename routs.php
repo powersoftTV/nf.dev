@@ -1,5 +1,11 @@
 <?php
     $_routs=array();
+    if(isset($languages) && count($languages)){
+        $lang=reset($languages);
+    }
+    else{
+        $lang="en";
+    }
     if(isset($_GET['routs'])){
        $_all_routs=array();    
        $_all_routs=explode('/',$_GET['routs']);

@@ -5,7 +5,12 @@
     include_once 'start.php';
     include_once 'authenticate.php';
 	$response="";
-    include_once 'ajax/ajax_load.php';
+    reset($_GET);
+    $get_name=key($_GET);
+    if($get_name && $get_name!=""){
+        $new_path=__DIR__.'/ajax/';
+        include_once $new_path.$get_name.'.php';
+    }
     echo $response;
 
 	include_once 'end.php';

@@ -1,9 +1,5 @@
 <?php
 
-    function my_autoloader($class) {
-        include 'classes/' . $class . '.class.php';
-    }
-
     function create_password($pwd){
         return md5(md5($pwd).'_'.md5($pwd));
     }
@@ -18,6 +14,31 @@
 		$result=hash('sha512', $result);
 		return $result;
 	}
+
+    function getHost() {
+        $possibleHostSources = array('HTTP_X_FORWARDED_HOST', 'HTTP_HOST', 'SERVER_NAME', 'SERVER_ADDR');
+        $sourceTransformations = array(
+            "HTTP_X_FORWARDED_HOST" => function($value) {
+                $elements = explode(',', $value);
+                return trim(end($elements));
+            }
+        );
+        $host = '';
+        foreach ($possibleHostSources as $source)
+        {
+            if (!empty($host)) break;
+            if (empty($_SERVER[$source])) continue;
+            $host = $_SERVER[$source];
+            if (array_key_exists($source, $sourceTransformations))
+            {
+                $host = $sourceTransformations[$source]($host);
+            } 
+        }
+
+        // Remove port number from host
+        $host = preg_replace('/:\d+$/', '', $host);
+        return trim($host);
+    }
     
     function get_ip() {
 		//Just get the headers if we can or else use the SERVER global
@@ -36,8 +57,12 @@
 			
 			$the_ip = filter_var( $_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 );
 		}
+        
 		return $the_ip;
+        
 	}
+
+
 
     function getBrowser() 
 { 
@@ -155,7 +180,7 @@ function my_send_mail($to, $subject, $message){
     $headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
     $headers .= 'To: <'.$to.'>' . "\r\n";
     $headers .= "From: system@".DOMAIN." <system@".DOMAIN."> \r\n";
-    if(!mail($to,$subject,$message,$headers)){
+    if(!@mail($to,$subject,$message,$headers)){
         return false;
     }
     return true;

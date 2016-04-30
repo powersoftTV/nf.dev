@@ -9,7 +9,7 @@ $(function(){
         };
         $.ajax({
             type: "POST",
-            url:'/ajax.php?recovery-password',
+            url: ajax+'recovery-password',
             data: 'data='+Base64.encode(JSON.stringify(dataObj))
        }).done(function(msg){
                         var data = JSON.parse(msg);

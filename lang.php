@@ -102,8 +102,8 @@ $_LANG["confirm"]["hy"]="Confirm";
 $_LANG["confirm"]["ru"]="Confirm";
 
 $_LANG["cancel"]["en"]="Cancel";
-$_LANG["cancel"]["hy"]="Cancel";
-$_LANG["cancel"]["ru"]="Cancel";
+$_LANG["cancel"]["hy"]="Անտեսել";
+$_LANG["cancel"]["ru"]="Отменить";
 
 $_LANG["ok"]["en"]="OK";
 $_LANG["ok"]["hy"]="OK";
@@ -185,6 +185,10 @@ $_LANG["empty_login"]["en"]="Please enter your login.";
 $_LANG["empty_login"]["hy"]="Please enter your login.";
 $_LANG["empty_login"]["ru"]="Please enter your login.";
 
+$_LANG["empty_username"]["en"]="Please enter your username.";
+$_LANG["empty_username"]["hy"]="Please enter your username.";
+$_LANG["empty_username"]["ru"]="Please enter your username.";
+
 $_LANG["db_error"]["en"]="DB Error.";
 $_LANG["db_error"]["hy"]="DB Error.";
 $_LANG["db_error"]["ru"]="DB Error.";
@@ -257,6 +261,8 @@ $_LANG["change_pass_success"]["en"]="You have successfully changed your password
 $_LANG["change_pass_success"]["hy"]="You have successfully changed your password.";
 $_LANG["change_pass_success"]["ru"]="You have successfully changed your password.";
 
+/*--------------------------HEADER----------------------------*/
+
 $_LANG["home"]["en"]="Home";
 $_LANG["home"]["hy"]="Home";
 $_LANG["home"]["ru"]="Home";
@@ -264,5 +270,44 @@ $_LANG["home"]["ru"]="Home";
 $_LANG["log_out"]["en"]="Log out";
 $_LANG["log_out"]["hy"]="Log out";
 $_LANG["log_out"]["ru"]="Log out";
+
+$_LANG["manage"]["en"]="Manage";
+$_LANG["manage"]["hy"]="Manage";
+$_LANG["manage"]["ru"]="Manage";
+
+$_LANG["categories"]["en"]="Categories";
+$_LANG["categories"]["hy"]="Categories";
+$_LANG["categories"]["ru"]="Categories";
+/*--------------------------- HOME PAGE --------------------------------------*/
+
+$_LANG["new_story"]["en"]="New Story";
+$_LANG["new_story"]["hy"]="Նոր Նյութ";
+$_LANG["new_story"]["ru"]="Новая Статья";
+
+$_LANG["story"]["en"]="Story";
+$_LANG["story"]["hy"]="Նյութ";
+$_LANG["story"]["ru"]="Статья";
+
+$_LANG["save"]["en"]="Save";
+$_LANG["save"]["hy"]="Պահել";
+$_LANG["save"]["ru"]="Сохранить";
+
+$_LANG["title"]["en"]="Title";
+$_LANG["title"]["hy"]="Վերնագիր";
+$_LANG["title"]["ru"]="Название";
+
+$_LANG["notes"]["en"]="Notes";
+$_LANG["notes"]["hy"]="Նշումներ";
+$_LANG["notes"]["ru"]="Заметки";
+
+$_LANG["language"]["en"]="Language";
+$_LANG["language"]["hy"]="Լեզու";
+$_LANG["language"]["ru"]="Язык";
+
+$_LANG["category"]["en"]="Category";
+$_LANG["category"]["hy"]="Բաժին";
+$_LANG["category"]["ru"]="Категория";
+
+/*-------------------------END OF HOME PAGE ----------------------------------*/
 
 ?>

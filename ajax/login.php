@@ -31,6 +31,7 @@ $empty=false;
                 $users_token = create_token();
                 $ua=getBrowser();
                 $browser= $ua['name'].",".$ua['version'].",".$ua['platform'];
+                
                 $ip_address=get_ip();
                 $query="INSERT INTO nf_users_tokens(
                           users_token
@@ -54,7 +55,7 @@ $empty=false;
                 if(@mysqli_query($MV,$query)){
                     setcookie("tkn", $users_token, $cookie_exp,'/','.'.DOMAIN); //set cookie until cookie_expire
                 }else {
-                    $messages['error']=$query;
+                    $messages['error']=$_LANG['db_error'][$lang];
                 }
             } else {
                 $messages['error']=$_LANG["invalid_login_pass"][$lang];

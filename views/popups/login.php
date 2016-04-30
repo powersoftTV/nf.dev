@@ -15,7 +15,7 @@
             <label for="sign_up"></label><a href="#" id="sign_up"><?=$_LANG["sign_up"][$lang]; ?></a>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary btn-lg login-btn"><?=$_LANG["log_in"][$lang]; ?></button>
+          <button type="button" class="btn btn-primary btn-lg login-btn on_enter"><?=$_LANG["log_in"][$lang]; ?></button>
         </div>
         
       </div>

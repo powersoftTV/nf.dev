@@ -8,3 +8,13 @@
     width: 230px;
     margin: 0 auto;
 }
+.button_wrapper{
+    padding:20px;
+}
+
+@media (min-width: 769px){
+    #new_story_popup .modal-dialog {
+        width: 95%;
+        max-width:1200px;
+    }
+}

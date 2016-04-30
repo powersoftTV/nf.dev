@@ -8,7 +8,7 @@ function createCookie(name, value, days) {
         } else {
             expires = "";
         }
-        document.cookie = encodeURIComponent(name) + "=" + encodeURIComponent(value) + expires + "; path=/ ";
+        document.cookie = encodeURIComponent(name) + "=" + encodeURIComponent(value) + expires + "; path=/ ;domain="+window.location.hostname;
 }
 function readCookie(name) {
         var nameEQ = encodeURIComponent(name) + "=";
@@ -189,6 +189,20 @@ $(document).ajaxComplete(function(event, request, settings) {
     $('#loading-indicator').hide();
 }); 
 
+$(document).keypress(function (e) {
+         var key = e.which;
+         if(key == 13)  
+          { 
+              if($('.modal').hasClass('in')){ 
+                  $('.modal.in .on_enter').click();
+              }
+              else{ 
+                $('.container .on_enter').click();
+              }
+              return false;  
+          }
+ });   
+
  $(function(){   
     
     var tkn=readCookie('tkn')
@@ -203,7 +217,7 @@ $(document).ajaxComplete(function(event, request, settings) {
         if(username!=""){
             $.ajax({
                 type: "POST",
-                url:'/ajax.php?check_username='+username
+                url: ajax+'check_field_exists&check_username='+username
              })
             .done(function(msg){
                 if(msg != ''){
@@ -222,7 +236,7 @@ $(document).ajaxComplete(function(event, request, settings) {
         if(email!=""){
             $.ajax({
                 type: "POST",
-                url:'/ajax.php?check_email='+email
+                url: ajax+'check_field_exists&check_email='+email
              })
             .done(function(msg){
                 if(msg != ''){
@@ -241,7 +255,7 @@ $(document).ajaxComplete(function(event, request, settings) {
         if(phone!=""){
             $.ajax({
                 type: "POST",
-                url:'/ajax.php?check_phone='+phone
+                url: ajax+'check_field_exists&check_phone='+phone
              })
             .done(function(msg){
                 if(msg != ''){
@@ -262,12 +276,13 @@ $(document).ajaxComplete(function(event, request, settings) {
     $('.sign-up-btn').click(function(){
          $('#signup_form').submit();
     }) 
+    
     $('#signup_form').submit(function(e){
         e.preventDefault();
         $('.form-control').removeClass('error_field'),
-        $('span.err_span').remove();
-        $('.alert').addClass('hidden');
-        $('.alert span').html('');
+        $('#sign-up-modal span.err_span').remove();
+        $('#sign-up-modal .alert').addClass('hidden');
+        $('#sign-up-modal .alert span').html('');
         var dataObj = {
                 username : $('#signup-username').val(),
                 first_name : $('#signup-first-name').val(),
@@ -280,7 +295,7 @@ $(document).ajaxComplete(function(event, request, settings) {
         
         $.ajax({
             type: "POST",
-            url:'/ajax.php?signup',
+            url: ajax+'signup',
             data: 'data='+Base64.encode(JSON.stringify(dataObj))
         }).done(function(msg){
                     var data = JSON.parse(msg);
@@ -300,8 +315,8 @@ $(document).ajaxComplete(function(event, request, settings) {
                                $("#sign-up-modal").animate({ scrollTop:  $(k).offset() }, "slow");
                             }
                             else{
-                               $('.alert').removeClass('hidden');
-                               $('.alert span').html('<span class="glyphicon glyphicon-exclamation-sign"></span> ' + v);
+                               $('#sign-up-modal .alert').removeClass('hidden');
+                               $('#sign-up-modal .alert span').html('<span class="glyphicon glyphicon-exclamation-sign"></span> ' + v);
                                $("#sign-up-modal").animate({ scrollTop: 0 }, "slow");
                             }
                        }
@@ -324,6 +339,10 @@ $(document).ajaxComplete(function(event, request, settings) {
         $('#forgot-password-modal .forgot-main .alert-info').removeClass('hidden');
         $('#forgot-password-modal .forgot-main .alert-danger').addClass('hidden');
         $('#forgot-password-modal input.forgot-email').val('');
+        setTimeout(function(){
+            $('input.forgot-email').focus();
+        });
+        
     });
     $('#forgot-password-modal .forgot-ok-btn').click(function(){
         $('#forgot-password-modal').modal('hide');
@@ -331,7 +350,7 @@ $(document).ajaxComplete(function(event, request, settings) {
     $('.forgot-btn').click(function(){
         $.ajax({
             type: "POST",
-            url:'/ajax.php?forgot-password='+$('.forgot-email').val()
+            url: ajax+'forgot-password='+$('.forgot-email').val()
        }).done(function(msg){
                         var data = JSON.parse(msg);
                         $.each(data, function(k,v){
@@ -348,5 +367,24 @@ $(document).ajaxComplete(function(event, request, settings) {
                     });
         });
     });
+      $('a.logout').click(function(e){
+          e.preventDefault();
+          var tkn=readCookie('tkn');
+          eraseCookie('tkn');
+          
+        $.ajax({
+            type: "POST",
+            url: ajax+'logout',
+            data: 'data='+Base64.encode(tkn)
+       }).done(function(msg){
+            location.href=root_folder+lang;
+            //console.log(msg);
+        });
+         // location.reload();
+      })
+    
  
+      
+      
+      //todo: logout when already logoff
 });

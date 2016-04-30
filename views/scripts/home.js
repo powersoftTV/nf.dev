@@ -2,15 +2,16 @@ $(function(){
     $('.login-btn').click(function(){
         $('.form-control').removeClass('error_field'),
         $('span.err_span').remove();
-        $('.alert').addClass('hidden');
-        $('.alert span').html('');
+        $('.container .alert').addClass('hidden');
+        $('.container .alert span').html('');
         var dataObj = {
                 login : $('#login-email').val(),
                 password : $('#login-password').val(),
         };
+       
         $.ajax({
             type: "POST",
-            url:'/ajax.php?login',
+            url: ajax+'login',
             data: 'data='+Base64.encode(JSON.stringify(dataObj))
        }).done(function(msg){
             var data = JSON.parse(msg);
@@ -19,8 +20,8 @@ $(function(){
             }
             else{
                 if(data.error!=""){
-                    $('.alert').removeClass('hidden');
-                    $('.alert span').html('<span class="glyphicon glyphicon-exclamation-sign"></span> ' + data.error);
+                    $('.container .alert').removeClass('hidden');
+                    $('.container .alert span').html('<span class="glyphicon glyphicon-exclamation-sign"></span> ' + data.error);
                 }
                 else{
                     if(data.error_login!=""){
@@ -36,5 +37,24 @@ $(function(){
                 }
             }
         });
-    });  
+    });
+    if(user_id!=""){
+        tinymce.init({
+              selector: '#edit_story',
+              height: 300,
+              theme: 'modern',
+              language: lang,
+              plugins: [
+                'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+                'searchreplace wordcount visualblocks visualchars code fullscreen',
+                'insertdatetime media nonbreaking save table contextmenu directionality',
+                'emoticons template paste textcolor colorpicker textpattern imagetools'
+              ],
+              toolbar1: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+              toolbar2: 'print preview media | forecolor backcolor emoticons',
+              image_advtab: true,
+
+
+        });
+    }
 });

@@ -8,16 +8,10 @@
     $admin_email="markareno@gmail.com";
 
     define('TIMEZONE', 'Asia/Yerevan');
-    define('PROTOCOL', 'http://');
-    define('DOMAIN', 'nf.dev');
-    $root_folder="/";
-    $_root="";
-    
+                
     $languages=array('en','ru','hy');
-    $lang='en';
-    $act='home';
-    
-
-    $VERSION=1.00;
+    $front_languages=array('en','ru','hy');
+          
+    $VERSION=1.01;
     
 ?>

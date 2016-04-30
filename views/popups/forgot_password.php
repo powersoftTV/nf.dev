@@ -17,7 +17,7 @@
         </div>
         <div class="modal-footer forgot-main">
             <input type="button" class="btn btn-primary btn-lg" data-dismiss="modal" value="<?=$_LANG["cancel"][$lang]; ?>">
-            <input type="button" class="btn btn-primary btn-lg forgot-btn" value="<?=$_LANG["send"][$lang]; ?>">
+            <input type="button" class="btn btn-primary btn-lg forgot-btn on_enter" value="<?=$_LANG["send"][$lang]; ?>">
         </div>
         <div class="modal-body forgot-add hidden">
             <div class="alert alert-info" role="alert">
