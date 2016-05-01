@@ -13,6 +13,7 @@
                      ut.user_id
                     ,u.username
                     ,u.nf_group
+                    ,u.lang
                     ,g.group_name
                 FROM nf_users_tokens ut
                 LEFT JOIN nf_users u ON u.user_id=ut.user_id
@@ -37,6 +38,7 @@
                     $_user['user_id'] = $_res['user_id'];
                     $_user['username']=$_res['username'];
                     $_user['group_name']=$_res['group_name'];
+                    if(isset($_res['lang']) && in_array($_res['lang'],$languages))$lang=$_res['lang'];
                     $query="SELECT
                                 role_id
                             FROM

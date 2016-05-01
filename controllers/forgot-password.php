@@ -1,4 +1,7 @@
 <?php
+if($_user['user_id']){
+    header('Location: '.$root_folder.$lang);
+}
    $msg=false;
    $forgot_user_id="";
     if(isset($_GET['e']) && $_GET['e']!=""){

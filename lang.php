@@ -4,9 +4,9 @@ $_LANG["company_name"]["en"]="Company name";
 $_LANG["company_name"]["hy"]="Ընկերության անունը";
 $_LANG["company_name"]["ru"]="название Компании";
 
-$_LANG["company_url"]["en"]="http://company.com/";
-$_LANG["company_url"]["hy"]="http://company.com/";
-$_LANG["company_url"]["ru"]="http://company.com/";
+$_LANG["company_url"]["en"]="/";
+$_LANG["company_url"]["hy"]="/";
+$_LANG["company_url"]["ru"]="/";
 
 $_LANG["sign_up"]["en"]="Sign Up";
 $_LANG["sign_up"]["hy"]="Sign Up";
@@ -272,12 +272,20 @@ $_LANG["log_out"]["hy"]="Log out";
 $_LANG["log_out"]["ru"]="Log out";
 
 $_LANG["manage"]["en"]="Manage";
-$_LANG["manage"]["hy"]="Manage";
-$_LANG["manage"]["ru"]="Manage";
+$_LANG["manage"]["hy"]="Կարավարում";
+$_LANG["manage"]["ru"]="Управление";
 
 $_LANG["categories"]["en"]="Categories";
-$_LANG["categories"]["hy"]="Categories";
-$_LANG["categories"]["ru"]="Categories";
+$_LANG["categories"]["hy"]="Բայիններ";
+$_LANG["categories"]["ru"]="Категории";
+
+$_LANG["users"]["en"]="Users";
+$_LANG["users"]["hy"]="Users";
+$_LANG["users"]["ru"]="Пользователи";
+
+$_LANG["groups"]["en"]="Groups";
+$_LANG["groups"]["hy"]="Խմբեր";
+$_LANG["groups"]["ru"]="Группы";
 /*--------------------------- HOME PAGE --------------------------------------*/
 
 $_LANG["new_story"]["en"]="New Story";

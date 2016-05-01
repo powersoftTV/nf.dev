@@ -13,6 +13,7 @@
     header('Content-Type: text/html; charset=utf-8');
 	/*--------------------DEFINE root follder ----------------------*/
     $root_folder=str_replace('index.php','',$_SERVER['SCRIPT_NAME']);
+    $root_folder=str_replace('ajax.php','',$root_folder);
     /*--------------------DEFINE protocol---------------------------*/
     if (isset($_SERVER['HTTPS']) &&
     ($_SERVER['HTTPS'] == 'on' || $_SERVER['HTTPS'] == 1) ||

@@ -192,6 +192,12 @@ label.required:after {
   -webkit-align-items: center; /* For Safari */
 }
 
+ul.dropdown-menu{
+  width:90% !important;
+  margin: 0 auto !important;
+  background-color: #fff !important;
+}
+
 
 
 @media (max-width: 768px){

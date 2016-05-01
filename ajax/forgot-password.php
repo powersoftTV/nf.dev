@@ -1,7 +1,8 @@
 <?php
     
     $email=mysqli_real_escape_string($MV,htmlspecialchars(trim($_GET['forgot-password'])));
-    
+    $lang=mysqli_real_escape_string($MV,htmlspecialchars(trim($_GET['lang'])));
+
     $messages=array();
     
     if($email==""){

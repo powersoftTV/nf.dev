@@ -15,7 +15,8 @@ $(function(){
                         var data = JSON.parse(msg);
                         $.each(data, function(k,v){
                         if(k=="success" || k=="error"){
-                           $('.vertical_center').html('<div class="big_text">'+v+'</div>');
+                           $('.forgot_confirm_pass').html('<div class="big_text">'+v+'</div>');
+                           $('.login_forgot').removeClass('hidden');
                         }        
                         else{
                            $(k).addClass('error_field');

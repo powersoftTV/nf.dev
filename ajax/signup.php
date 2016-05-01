@@ -9,6 +9,7 @@
     $data['last_name']=mysqli_real_escape_string($MV,htmlspecialchars(trim($data['last_name'])));
     $data['password']=mysqli_real_escape_string($MV,htmlspecialchars(trim($data['password'])));
     $data['confirm_pass']=mysqli_real_escape_string($MV,htmlspecialchars(trim($data['confirm_pass'])));
+    $data['lang']=mysqli_real_escape_string($MV,htmlspecialchars(trim($data['lang'])));
 
     $messages=array();
     
@@ -120,6 +121,7 @@
                     , username
                     , first_name
                     , last_name
+                    , lang
                    
                 ) VALUES (
                       '".$data['email']."'
@@ -128,7 +130,7 @@
                     , '".$data['username']."'
                     , '".$data['first_name']."'
                     , '".$data['last_name']."'
-                   
+                    , '".$data['lang']."'
                 )
     ";
     if(!mysqli_query($MV,$query)){
@@ -156,7 +158,7 @@
         $response = json_encode($messages);
         return;
     }
-    $conf_link=PROTOCOL.DOMAIN.$root_folder.$lang."/email-confirmation/?e=".base64_encode($data['email'].DOMAIN.create_password($data['password']));
+    $conf_link=PROTOCOL.DOMAIN.$root_folder.$data['lang']."/email-confirmation/?e=".base64_encode($data['email'].DOMAIN.create_password($data['password']));
     $to = $data['email'];
     $subject = $_LANG['dear'][$lang]." ".$data['first_name']." ".$data['last_name'];
     $message = "<html>

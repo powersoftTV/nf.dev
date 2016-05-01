@@ -4,8 +4,7 @@
         return md5(md5($pwd).'_'.md5($pwd));
     }
 
-
-	function create_token(){
+    function create_token(){
 		$alphabet='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
 		$result='';
 		for($i=0;$i<128;$i++){

@@ -1,4 +1,7 @@
 <?php
+if($_user['user_id']){
+    header('Location: '.$root_folder.$lang);
+}
     $msg=false;
     if(isset($_GET['e']) && $_GET['e']!=""){
         $data=explode(DOMAIN,base64_decode($_GET['e']));

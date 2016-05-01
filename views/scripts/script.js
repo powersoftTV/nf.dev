@@ -290,7 +290,8 @@ $(document).keypress(function (e) {
                 email : $('#signup-email').val(),
                 phone : $('#signup-phone').val(),
                 password : $('#signup-password').val(),
-                confirm_pass : $('#signup_confirm_password').val()
+                confirm_pass : $('#signup_confirm_password').val(),
+                lang : lang
         };
         
         $.ajax({
@@ -350,7 +351,7 @@ $(document).keypress(function (e) {
     $('.forgot-btn').click(function(){
         $.ajax({
             type: "POST",
-            url: ajax+'forgot-password='+$('.forgot-email').val()
+            url: ajax+'forgot-password='+$('.forgot-email').val()+'&lang='+lang
        }).done(function(msg){
                         var data = JSON.parse(msg);
                         $.each(data, function(k,v){
@@ -370,21 +371,60 @@ $(document).keypress(function (e) {
       $('a.logout').click(function(e){
           e.preventDefault();
           var tkn=readCookie('tkn');
-          eraseCookie('tkn');
-          
-        $.ajax({
-            type: "POST",
-            url: ajax+'logout',
-            data: 'data='+Base64.encode(tkn)
-       }).done(function(msg){
-            location.href=root_folder+lang;
-            //console.log(msg);
-        });
-         // location.reload();
+          if(tkn) {
+              eraseCookie('tkn');
+
+              $.ajax({
+                  type: "POST",
+                  url: ajax + 'logout',
+                  data: 'data=' + Base64.encode(tkn)
+              }).done(function (msg) {
+                  location.href = root_folder + lang;
+                  //console.log(msg);
+              });
+          }
+          else{
+              location.href = root_folder + lang;
+          }
       })
-    
- 
-      
-      
-      //todo: logout when already logoff
+
+     $('.login-btn').click(function(){
+         $('.form-control').removeClass('error_field'),
+             $('span.err_span').remove();
+         $('.container .alert').addClass('hidden');
+         $('.container .alert span').html('');
+         var dataObj = {
+             login : $('#login-email').val(),
+             password : $('#login-password').val(),
+         };
+
+         $.ajax({
+             type: "POST",
+             url: ajax+'login',
+             data: 'data='+Base64.encode(JSON.stringify(dataObj))
+         }).done(function(msg){
+             var data = JSON.parse(msg);
+             if(data.error=="" && data.error_login=="" && data.error_password==""){
+                 location.reload();
+             }
+             else{
+                 if(data.error!=""){
+                     $('.container .alert').removeClass('hidden');
+                     $('.container .alert span').html('<span class="glyphicon glyphicon-exclamation-sign"></span> ' + data.error);
+                 }
+                 else{
+                     if(data.error_login!=""){
+                         $('#login-email').addClass('error_field');
+                         $('#login-email').after('<span class="err_span">'+data.error_login+'</span>');
+                         $('#login-email').attr("autofocus","autofocus");
+                     }
+                     if(data.error_password!=""){
+                         $('#login-password').addClass('error_field');
+                         $('#login-password').after('<span class="err_span">'+data.error_password+'</span>');
+                         $('#login-password').attr("autofocus","autofocus");
+                     }
+                 }
+             }
+         });
+     });
 });

@@ -1,5 +1,5 @@
 <?php
-$empty=false;
+    $empty=false;
     $data =  base64_decode($_POST['data']);
     if(!isset($data) || $data==""){
         $empty=true;

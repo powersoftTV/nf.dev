@@ -57,13 +57,23 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="nav navbar-nav navbar-right">
                 <li class="<?php if($act=='home') echo "active"; ?> text-center"><a href="<?php echo $root_folder.$lang."/"; ?>"><?php echo $_LANG["home"][$lang]; ?></a></li>
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Drop Down<b class="caret"></b></a>
+                <?php if(in_array(1,$_user['roles']) || in_array(2,$_user['roles']) || in_array(3,$_user['roles'])){ ?>
+                <li class="dropdown">
+                    <a class="text-center" href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $_LANG["manage"][$lang]; ?><b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <?php if(in_array(1,$_user['roles'])){ ?>
-                            <li class="<?php if($act=='manage-categories') echo "active"; ?> text-center"><a href="<?php echo $root_folder.$lang."/manage-categories"; ?>"><?php echo $_LANG["manage_categories"][$lang]; ?></a></li>
+                            <li class="<?php if($act=='manage-categories') echo "active"; ?> text-center"><a href="<?php echo $root_folder.$lang."/manage-categories"; ?>"><?php echo $_LANG["categories"][$lang]; ?></a></li>
                         <?php } ?>
-                            <li class="text-center"><a class="logout" href="#"><?php echo $_LANG["log_out"][$lang]; ?></a></li>
+                        <?php if(in_array(2,$_user['roles'])){ ?>
+                            <li class="<?php if($act=='manage-users') echo "active"; ?> text-center"><a href="<?php echo $root_folder.$lang."/manage-users"; ?>"><?php echo $_LANG["users"][$lang]; ?></a></li>
+                        <?php } ?>
+                        <?php if(in_array(3,$_user['roles'])){ ?>
+                            <li class="<?php if($act=='manage-groups') echo "active"; ?> text-center"><a href="<?php echo $root_folder.$lang."/manage-groups"; ?>"><?php echo $_LANG["groups"][$lang]; ?></a></li>
+                        <?php } ?>
                     </ul>
+                </li>
+                <?php } ?>
+                <li class="text-center"><a class="logout" href="#"><?php echo $_LANG["log_out"][$lang]; ?></a></li>
             </ul>
         </div>
         <?php } 
