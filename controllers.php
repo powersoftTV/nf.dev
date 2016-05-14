@@ -11,4 +11,5 @@
          $act='home';
          include_once $root_folder.'controllers/home.php' ;
     }
+
 ?>
