@@ -10,7 +10,7 @@
                 <div class="alert alert-danger hidden" role="alert">
                     <span></span> 
                 </div>
-                <?php if(count($front_languages)>1){ ?>
+                <?php if(isset($front_languages) && count($front_languages)>1){ ?>
                         <label for="language"><?=$_LANG["language"][$lang]; ?>:</label>
                         <select class="selectpicker">
                             <?php foreach($front_languages as $v){ ?>

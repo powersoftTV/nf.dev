@@ -28,6 +28,7 @@
     /*-------------------DEFINE domain-------------------------------*/
     define('DOMAIN', getHost());
     /*---------------------------------------------------------------*/
+    global $MV;
 	$MV=@mysqli_connect($db_host,$db_user,$db_pass);
 	if(!$MV) $_errors[] = $_LANG['db_error'][$lang];
 	if(!@mysqli_select_db($MV, $db_name))$_errors[] = $_LANG['db_error'][$lang];
@@ -51,6 +52,18 @@
 	spl_autoload_register(function ($class_name) {
         include_once "classes/".$class_name.'.php';
     });
+    //$reg = new Registry();
+    Registry::getInstance()->setDB($MV);
+    if(!isset($languages)) {
+        $languages=array();
+    }
+    if(!isset($front_languages)) {
+        $front_languages=array();
+    }
+    Registry::getInstance()->setLang($languages);
+    Registry::getInstance()->setFrontLang($front_languages);
+
+
 
 	
 ?>

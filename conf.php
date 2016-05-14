@@ -8,7 +8,7 @@
     $admin_email="markareno@gmail.com";
 
     define('TIMEZONE', 'Asia/Yerevan');
-                
+
     $languages=array('en','ru','hy');
     $front_languages=array('en','ru','hy');
           

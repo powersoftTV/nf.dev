@@ -117,6 +117,14 @@ $_LANG["send"]["en"]="Send";
 $_LANG["send"]["hy"]="Send";
 $_LANG["send"]["ru"]="Send";
 
+$_LANG["add"]["en"]="Add";
+$_LANG["add"]["hy"]="Ավելացնել";
+$_LANG["add"]["ru"]="Добавить";
+
+$_LANG["description"]["en"]="Description";
+$_LANG["description"]["hy"]="Բացատրություն";
+$_LANG["description"]["ru"]="Описание";
+
 $_LANG["forgot_pass_message"]["en"]="Enter the email address and we will send you instructions.";
 $_LANG["forgot_pass_message"]["hy"]="Enter the email address and we will send you instructions.";
 $_LANG["forgot_pass_message"]["ru"]="Enter the email address and we will send you instructions.";
