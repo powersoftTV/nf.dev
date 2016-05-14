@@ -12,6 +12,7 @@
         include_once $new_path.$get_name.'.php';
     }
     echo $response;
+	
 
 	include_once 'end.php';
 ?>
