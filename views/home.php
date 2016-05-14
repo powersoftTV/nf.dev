@@ -14,6 +14,7 @@
           <button type="button" class="btn btn-primary btn-lg login-btn on_enter"><?=$_LANG["log_in"][$lang];?></button>
         </div>
         </div>
+
 <?php } 
     else{ 
         include_once 'views/popups/new_story.php'; ?>
