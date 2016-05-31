@@ -1,3 +1,6 @@
+body{
+    background-image: url(../images/geometry.gif);
+}
 .login-btn{
     margin-top: 20px;
 }
@@ -10,6 +13,16 @@
 }
 .button_wrapper{
     padding:20px;
+}
+.login_wrapper{
+    padding:30px;
+    margin:30px;
+    border-radius: 25px;
+    background: rgba(0,0,0,0.5);
+    color:#FFF;
+}
+.login_wrapper a{
+    color:#fff;
 }
 
 @media (min-width: 769px){

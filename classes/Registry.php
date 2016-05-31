@@ -63,12 +63,12 @@ class Registry
             throw new RuntimeException('Front Language has already been set.');
         }
         else {
-            $this->_lang = $frontlang;
+            $this->_frontlang = $frontlang;
         }
     }
     public function getFrontLang()
     {
-        if (isset($this->_frontlanglang)) {
+        if (isset($this->_frontlang)) {
             return $this->_frontlang;
         }
         throw new RuntimeException ('Front Language resource not found in the registry');

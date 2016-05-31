@@ -2,11 +2,12 @@
 if(!$_user['user_id'] || !(in_array(1,$_user['roles']))){
     header('Location: '.$root_folder.$lang);
 }
-$category=new ManageProperties('category');
 
+$category=new ManageProperties('category');
+$f_lang=Registry::getInstance()->getFrontLang();
+$fr_lang=$f_lang[0];
 if(isset($_REQUEST['name'])){
     $name=mysqli_real_escape_string($MV,htmlspecialchars(trim($_REQUEST['name'])));
-    $fr_lang="";
     if(isset($_REQUEST['fr_lang'])){
         $fr_lang=mysqli_real_escape_string($MV,htmlspecialchars(trim($_REQUEST['fr_lang'])));
     }
@@ -16,5 +17,22 @@ if(isset($_REQUEST['name'])){
     }
     $category->AddProperty($name,$descr,$_user['user_id'],0,$fr_lang);
 }
-var_export($category->ListProperties());
+$categories= array();
+$cat_lang=$f_lang[0];
+
+foreach($category->ListProperties() as $k=>$v){
+    foreach($v as $key=>$val){
+        if ($key == 'language') {
+            $cat_lang = $val;
+        }
+    }
+    foreach($v as $key=>$val){
+        if($key=='category'){
+            $categories[$v['category_id']]['category_'.$cat_lang] = $val;
+        }
+        elseif($key=='description'){
+            $categories[$v['category_id']]['description_'.$cat_lang] = $val;
+        }
+    }
+}
 

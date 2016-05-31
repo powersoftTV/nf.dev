@@ -1,15 +1,11 @@
 <?php
-    if(!isset($lang) || $lang==""){
-        $lang="en";
-    }
     $_TITLE=$_LANG["company_name"][$lang];
 	$_DESCRIPTION='';
 	$_KEYWORDS='';
 	$_CANONICAL='';
 	$ADD_SCRIPTS=array();
     $_errors=array();
-    
-    	
+
     header('Content-Type: text/html; charset=utf-8');
 	/*--------------------DEFINE root follder ----------------------*/
     $root_folder=str_replace('index.php','',$_SERVER['SCRIPT_NAME']);
@@ -52,18 +48,9 @@
 	spl_autoload_register(function ($class_name) {
         include_once "classes/".$class_name.'.php';
     });
-    //$reg = new Registry();
+
     Registry::getInstance()->setDB($MV);
-    if(!isset($languages)) {
-        $languages=array();
-    }
-    if(!isset($front_languages)) {
-        $front_languages=array();
-    }
     Registry::getInstance()->setLang($languages);
     Registry::getInstance()->setFrontLang($front_languages);
 
-
-
-	
 ?>

@@ -1,4 +1,9 @@
+ul{
+  list-style: none !important;
+}
+
 /* notifications */
+
 .alerts {
     margin: 20px auto;
     position: absolute;

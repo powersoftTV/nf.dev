@@ -4,13 +4,13 @@
             <div class="modal-header">
                 <h4 class="modal-title"><?=$_LANG["new"][$lang]." ".$_LANG["category"][$lang];?></h4>
             </div>
-            <form id="new_category_form" method="post">
+            <form id="new_category_form" method="post" novalidate>
                 <div class="modal-body main">
 
                     <div class="alert alert-danger hidden" role="alert">
                         <span></span>
                     </div>
-                    <?php if(isset($front_languages) && count($front_languages)>1){ ?>
+                    <?php if(count($front_languages)>1){ ?>
                         <label for="language"><?=$_LANG["language"][$lang]; ?>:</label>
                         <select class="selectpicker" name="fr_lang">
                             <?php foreach($front_languages as $v){ ?>
