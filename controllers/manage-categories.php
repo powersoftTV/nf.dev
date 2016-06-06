@@ -22,17 +22,20 @@ $cat_lang=$f_lang[0];
 
 foreach($category->ListProperties() as $k=>$v){
     foreach($v as $key=>$val){
-        if ($key == 'language') {
+        if ($key == 'language' && $val) {
             $cat_lang = $val;
         }
     }
-    foreach($v as $key=>$val){
-        if($key=='category'){
-            $categories[$v['category_id']]['category_'.$cat_lang] = $val;
-        }
-        elseif($key=='description'){
-            $categories[$v['category_id']]['description_'.$cat_lang] = $val;
+    if(in_array($cat_lang,$front_languages)) {
+        foreach ($v as $key => $val) {
+            if ($key == 'category') {
+                $categories[$v['category_id']]['category'][$cat_lang] = $val;
+            } elseif ($key == 'description') {
+                $categories[$v['category_id']]['description'][$cat_lang] = $val;
+            }
         }
     }
 }
+$total=count($categories);
+
 

@@ -86,8 +86,12 @@ $_LANG["name"]["hy"]="Name";
 $_LANG["name"]["ru"]="Name";
 
 $_LANG["new"]["en"]="New";
-$_LANG["new"]["hy"]="New";
-$_LANG["new"]["ru"]="New";
+$_LANG["new"]["hy"]="Նոր";
+$_LANG["new"]["ru"]="Новая";
+
+$_LANG["edit_cat"]["en"]="Edit Category";
+$_LANG["edit_cat"]["hy"]="խմբագրել բաժինը";
+$_LANG["edit_cat"]["ru"]="Редактировать категорию";
 
 $_LANG["phone"]["en"]="Phone";
 $_LANG["phone"]["hy"]="Phone";

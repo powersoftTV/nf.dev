@@ -1,8 +1,8 @@
-<div class="modal fade" id="new_category_popup" role="dialog">
+<div class="modal fade" id="edit_category_popup" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title"><?=$_LANG["new"][$lang]." ".$_LANG["category"][$lang];?></h4>
+                <h4 class="modal-title"><?=$_LANG["edit_cat"][$lang];?></h4>
             </div>
             <form id="new_category_form" method="post" novalidate>
                 <div class="modal-body main">
@@ -13,11 +13,7 @@
                     <?php if(count($front_languages)>1){ ?>
                         <div class="lang_sel">
                             <label for="language"><?=$_LANG["language"][$lang]; ?>:</label>
-                            <select class="selectpicker" name="fr_lang">
-                                <?php foreach($front_languages as $v){ ?>
-                                    <option value="<?php echo $v; ?>"><?php echo show_lang($v,$lang ); ?></option>
-                                <?php } ?>
-                            </select>
+                            <span id="language"></span>
                         </div>
                     <?php } ?>
                     <label class="required" for="story_title"><?=$_LANG["category"][$lang]; ?>:</label><input autofocus required autocomplete="true" type="text" class="form-control" id="name" name="name"><br>
@@ -26,7 +22,7 @@
                 </div>
                 <div class="modal-footer main">
                     <input type="button" class="btn btn-primary btn-lg" data-dismiss="modal" value="<?=$_LANG["cancel"][$lang]; ?>">
-                    <button type="submit" class="btn btn-primary btn-lg sign-up-btn on_enter"><?=$_LANG["add"][$lang]; ?></button>
+                    <button type="submit" class="btn btn-primary btn-lg sign-up-btn on_enter"><?=$_LANG["save"][$lang]; ?></button>
                 </div>
             </form>
             <div class="information hidden">

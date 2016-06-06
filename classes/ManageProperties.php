@@ -92,4 +92,23 @@ class ManageProperties
 
     }
 
+    public function GetProperties($lang, $id){
+        $query="
+            SELECT
+                ".$this->_propertyType.",description
+            FROM
+                nf_".$this->_propertyType."_data
+            WHERE
+                ".$this->_propertyType."_id=".$id." AND language='".$lang."'
+        ";
+        $prop=array();
+        if($res=@mysqli_query(Registry::getInstance()->getDB(),$query)){
+            if($_res=@mysqli_fetch_assoc($res)){
+                $prop=$_res;
+            }
+        }
+        else return false;
+        return $prop;
+    }
+
 }
