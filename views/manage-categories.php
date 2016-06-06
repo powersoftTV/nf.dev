@@ -10,7 +10,7 @@ include_once 'views/popups/edit_category.php';
 
     <div class="container">
         <div class="button_wrapper"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#new_category_popup"><?=$_LANG["new"][$lang]." ".$_LANG["category"][$lang];?></button></div>
-        <table class="table table-condensed table-hover">
+        <table id="cat_table"  class="table table-hover table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
             <?php if(count($front_languages)>1){ ?>
             <tr class="info">

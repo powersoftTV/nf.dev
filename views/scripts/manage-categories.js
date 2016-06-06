@@ -22,5 +22,10 @@ $(function(){
             else location.reload();
         });
     })
-
+    $('#cat_table').DataTable( {
+        "paging":   false,
+        "info":     false
+    } );
+    $('#cat_table_filter label').contents().filter(function(){ return this.nodeType != 1; }).remove();
+    $('#cat_table_filter label').prepend('<span class="glyphicon glyphicon-search"></span>');
 });

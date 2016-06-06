@@ -4,6 +4,7 @@
 	$_KEYWORDS='';
 	$_CANONICAL='';
 	$ADD_SCRIPTS=array();
+	$ADD_CSS=array();
     $_errors=array();
 
     header('Content-Type: text/html; charset=utf-8');

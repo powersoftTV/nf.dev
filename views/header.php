@@ -9,6 +9,7 @@
     
     <link rel="stylesheet" type="text/css" href="<?=$root_folder?>views/css/bootstrap.min.css?<?php echo $VERSION; ?>"/><?php //reference http://getbootstrap.com/components/ ?>
     <link rel='stylesheet' type='text/css' href="<?=$root_folder?>views/css/bootstrap-select.min.css">
+    <link rel='stylesheet' type='text/css' href="<?=$root_folder?>views/scripts/datatable/datatables.min.css">
     <!--<link rel='stylesheet' type='text/css' href="<?=$root_folder?>views/css/bootstrap-datepicker.min.css">--><?php //reference https://github.com/eternicode/bootstrap-datepicker ?>
 <?php 
         /*

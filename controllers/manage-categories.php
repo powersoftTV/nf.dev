@@ -37,5 +37,6 @@ foreach($category->ListProperties() as $k=>$v){
     }
 }
 $total=count($categories);
+$ADD_SCRIPTS[]="datatable/datatables.min.js";
 
 
