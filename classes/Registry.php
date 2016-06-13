@@ -12,6 +12,7 @@ class Registry
     protected $_lang = array();
     protected $_frontlang = array();
     protected $_MV;
+    protected $_user = array();
     protected function __construct()
     {
     }
@@ -52,7 +53,7 @@ class Registry
     }
     public function getLang()
     {
-        if (isset($this->_lang)) {
+        if (count($this->_lang)) {
             return $this->_lang;
         }
         throw new RuntimeException ('Language resource not found in the registry');
@@ -68,9 +69,25 @@ class Registry
     }
     public function getFrontLang()
     {
-        if (isset($this->_frontlang)) {
+        if (count($this->_frontlang)) {
             return $this->_frontlang;
         }
         throw new RuntimeException ('Front Language resource not found in the registry');
+    }
+    public function setUser($_user)
+    {
+        if (count($this->_user)) {
+            throw new RuntimeException('User has already been set.');
+        }
+        else {
+            $this->_user = $_user;
+        }
+    }
+    public function getUser()
+    {
+        if (count($this->_user)) {
+            return $this->_user;
+        }
+        return false;
     }
 }

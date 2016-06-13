@@ -16,6 +16,8 @@ if($_user['user_id'] && isset($_POST['data']) && $_POST['data']) {
         $cat=array();
         $cat=$category->GetProperties($cat_lng, $cat_id);
         $cat['language']=$lng;
+        $cat['lng']=$data['cat_lng'];
+        $cat['id']=$data['cat_id'];
         $response = json_encode($cat);
     }
 }

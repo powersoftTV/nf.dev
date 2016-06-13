@@ -17,23 +17,37 @@ include_once 'views/popups/edit_category.php';
                 <?php foreach($front_languages as $v){ ?>
                     <th><?php echo show_lang($v,$lang ); ?></th>
                 <?php } ?>
+                    <th class="hidden">
+                        <?php echo $_LANG["updated"][$lang]; ?>
+                    </th>
             </tr>
             <?php } ?>
             </thead>
             <tbody>
             <?php  foreach($categories as $k=>$val){ ?>
                         <tr>
+                            <?php $datetime=0; ?>
                             <?php foreach($front_languages as $v){ ?>
                                 <td>
                                     <?php if(isset($val['category'][$v])){ ?>
-                                        <a title="<?php echo $_LANG['edit_cat'][$lang] ?>" data-cat_id="<?php echo $k; ?>" data-cat_lng="<?php echo $v; ?>" data-toggle="modal"  href="#edit_category_popup">
+                                        <a next-title="<?php echo $_LANG['edit_cat'][$lang] ?>" title="<?php echo $_LANG['edit_cat'][$lang] ?>" data-cat_id="<?php echo $k; ?>" data-cat_lng="<?php echo $v; ?>" data-toggle="modal"  href="#edit_category_popup">
                                             <?php echo $val['category'][$v]; ?>
                                         </a>
+                                        <?php
+                                        if($val['last_updated_date'][$v]>$datetime){
+                                            $datetime=$val['last_updated_date'][$v];
+                                        }
+                                        ?>
                                     <?php } else { ?>
-                                        <a title="<?php echo $_LANG['add'][$lang] ?>" data-cat_id="<?php echo $k; ?>" data-cat_lng="<?php echo $v; ?>" data-toggle="modal" data-target="#edit_category_popup" href="#"><span class="glyphicon glyphicon-plus"></span></a>
+                                        <a next-title="<?php echo $_LANG['edit_cat'][$lang] ?>" title="<?php echo $_LANG['add'][$lang] ?>" data-cat_id="<?php echo $k; ?>" data-cat_lng="<?php echo $v; ?>" data-toggle="modal" href="#edit_category_popup"><span class="glyphicon glyphicon-plus"></span></a>
                                     <?php } ?>
                                 </td>
                             <?php } ?>
+                            <td class="hidden">
+                                <?php
+                                echo date($datetime);
+                                ?>
+                            </td>
                         </tr>
             <?php } ?>
 

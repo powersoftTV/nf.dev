@@ -53,6 +53,7 @@
                             $_user['roles'][]=$_result['role_id'];
                         }
                         setcookie("tkn", $users_token, $cookie_exp,'/','.'.DOMAIN);
+                        Registry::getInstance()->setUser($_user);
                     }
                     else $_errors[] = $_LANG['db_error'][$lang];
                 }

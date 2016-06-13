@@ -109,6 +109,10 @@ $_LANG["cancel"]["en"]="Cancel";
 $_LANG["cancel"]["hy"]="Անտեսել";
 $_LANG["cancel"]["ru"]="Отменить";
 
+$_LANG["updated"]["en"]="Updated";
+$_LANG["updated"]["hy"]="Թարմացվացը";
+$_LANG["updated"]["ru"]="Обновлено";
+
 $_LANG["ok"]["en"]="OK";
 $_LANG["ok"]["hy"]="OK";
 $_LANG["ok"]["ru"]="Ok";

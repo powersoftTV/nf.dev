@@ -15,23 +15,25 @@ if(isset($_REQUEST['name'])){
     if(isset($_REQUEST['description'])){
         $descr=mysqli_real_escape_string($MV,htmlspecialchars(trim($_REQUEST['description'])));
     }
-    $category->AddProperty($name,$descr,$_user['user_id'],0,$fr_lang);
+    $category->AddProperty($name,$descr,0,$fr_lang);
 }
 $categories= array();
 $cat_lang=$f_lang[0];
 
 foreach($category->ListProperties() as $k=>$v){
-    foreach($v as $key=>$val){
-        if ($key == 'language' && $val) {
-            $cat_lang = $val;
-        }
+    if ($v['language'] && $v['language']) {
+        $fr_lang = $v['language'];
     }
-    if(in_array($cat_lang,$front_languages)) {
+    if(in_array($fr_lang,$front_languages)) {
         foreach ($v as $key => $val) {
             if ($key == 'category') {
-                $categories[$v['category_id']]['category'][$cat_lang] = $val;
+                $categories[$v['category_id']]['category'][$fr_lang] = $val;
             } elseif ($key == 'description') {
-                $categories[$v['category_id']]['description'][$cat_lang] = $val;
+                $categories[$v['category_id']]['description'][$fr_lang] = $val;
+            } elseif ($key == 'last_updated_date') {
+                $categories[$v['category_id']]['last_updated_date'][$fr_lang] = $val;
+            } elseif ($key == 'username') {
+                $categories[$v['category_id']]['username'][$fr_lang] = $val;
             }
         }
     }
