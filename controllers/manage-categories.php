@@ -15,7 +15,7 @@ if(isset($_REQUEST['name'])){
     if(isset($_REQUEST['description'])){
         $descr=mysqli_real_escape_string($MV,htmlspecialchars(trim($_REQUEST['description'])));
     }
-    $category->AddProperty($name,$descr,0,$fr_lang);
+    $category->AddProperty($name,$fr_lang,$descr);
 }
 $categories= array();
 $cat_lang=$f_lang[0];

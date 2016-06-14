@@ -26,8 +26,7 @@ $(function(){
     });
     $('#cat_table').DataTable( {
         "paging":   false,
-        "info":     false,
-        "order": [[ 3, "desc" ]]
+        "info":     false
     } );
     $('#cat_table_filter label').contents().filter(function(){ return this.nodeType != 1; }).remove();
     $('#cat_table_filter label').prepend('<span class="glyphicon glyphicon-search"></span>');

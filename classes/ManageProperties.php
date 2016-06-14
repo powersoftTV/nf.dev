@@ -27,35 +27,36 @@ class ManageProperties
         $where="";
         if(count($lang)){
             foreach($lang as $v) {
-                $where .= " AND t1.language='" . $v . "'";
+                $where .= " AND t2.language='" . $v . "'";
             }
         }
         if(count($name)){
             foreach($name as $v) {
-                $where .= " AND t1.".$this->_propertyType."='".$v."'";
+                $where .= " AND t2.".$this->_propertyType."='".$v."'";
             }
         }
         $query="
             SELECT
-                  t1.".$this->_propertyType."_id
-                , t1.".$this->_propertyType."
-                , t1.description
-                , t1.language
-                , t1.who_last_update
-                , t1.last_updated_date
-                , t2.is_removed_from_list
+                  t2.".$this->_propertyType."_id
+                , t2.".$this->_propertyType."
+                , t2.description
+                , t2.language
+                , t2.who_last_update
+                , t2.last_updated_date
+                , t1.is_removed_from_list
                 , t3.username
             FROM
-                nf_".$this->_propertyType."_data t1
+                nf_".$this->_propertyType." t1
             LEFT JOIN
-                nf_".$this->_propertyType." t2 ON t1.".$this->_propertyType."_id=t2.id
+                nf_".$this->_propertyType."_data t2 ON t2.".$this->_propertyType."_id=t1.id
             LEFT JOIN
-                nf_users t3 ON t1.who_last_update=t3.user_id
+                nf_users t3 ON t2.who_last_update=t3.user_id
             WHERE
                 true ".$where."
+            ORDER BY
+                t1.id DESC
 
         ";
-
         $prop=array();
         if($res=@mysqli_query(Registry::getInstance()->getDB(),$query)){
             while($_res=@mysqli_fetch_assoc($res)){
@@ -66,7 +67,7 @@ class ManageProperties
         return $prop;
 
     }
-    public function AddProperty($name,$description="",$prop_id=0,$lang=""){
+    public function AddProperty($name,$lang="",$description=""){
         if($who=Registry::getInstance()->getUser()) {
             if (isset($who['user_id']) && $who['user_id']) {
                 if (isset($name) && $name != "") {
@@ -76,24 +77,18 @@ class ManageProperties
                             $lang = $l[0];
                         }
                     }
-
-                    if ((!$prop = $this->ListProperties(array($name), array($lang))) || !count($prop)) {
-                        if (!$prop_id) {
-                            $query = "
-                      INSERT INTO nf_" . $this->_propertyType . " (is_removed_from_list) VALUES(0)
-                    ";
-                            if (@mysqli_query(Registry::getInstance()->getDB(), $query)) {
-                                $prop_id = mysqli_insert_id(Registry::getInstance()->getDB());
-                            } else return false;
+                    $prop = $this->ListProperties(array($lang), array($name));
+                    if (!$prop || !count($prop)) {
+                        $query = "INSERT INTO nf_".$this->_propertyType." (is_removed_from_list) VALUES(0)";
+                        if (@mysqli_query(Registry::getInstance()->getDB(), $query)) {
+                            $prop_id = mysqli_insert_id(Registry::getInstance()->getDB());
                         }
-
-                        $query = "
-                    INSERT INTO nf_" . $this->_propertyType . "_data (" . $this->_propertyType . "_id, language, " . $this->_propertyType . ", description,who_last_update) VALUES(" . $prop_id . ",'" . $lang . "','" . $name . "','" . $description . "'," . $who['user_id'] . ")
-                ";
-
+                        else return false;
+                        $query = "INSERT INTO nf_".$this->_propertyType ."_data (" . $this->_propertyType . "_id, language, " . $this->_propertyType . ", description,who_last_update) VALUES(" . $prop_id . ",'" . $lang . "','" . $name . "','" . $description . "'," . $who['user_id'] . ")";
                         if (@mysqli_query(Registry::getInstance()->getDB(), $query)) {
                             return "success";
-                        } else return false;
+                        }
+                        else return false;
                     } else return false;
 
                 } else return false;

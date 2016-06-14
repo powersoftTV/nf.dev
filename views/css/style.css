@@ -150,7 +150,9 @@ ul{
   text-decoration: underline;
 }
 /* notification end */
-
+footer{
+  margin-top: 20px;
+}
 .modal-dialog{
    width: 400px;
 }

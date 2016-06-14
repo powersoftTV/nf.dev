@@ -5,11 +5,11 @@ if(!$_user['user_id'] || !(in_array(1,$_user['roles']))){
 include_once 'views/popups/new_category.php';
 include_once 'views/popups/edit_category.php';
 ?>
-<div class="container">
-    <h1><?=$_LANG["categories"][$lang];?> <span class="badge"><?php echo $total; ?></span></h1>
-
+<div class="container page">
     <div class="container">
+        <h1><?=$_LANG["categories"][$lang];?> <span class="badge"><?php echo $total; ?></span></h1>
         <div class="button_wrapper"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#new_category_popup"><?=$_LANG["new"][$lang]." ".$_LANG["category"][$lang];?></button></div>
+    </div>
         <table id="cat_table"  class="table table-hover table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
             <?php if(count($front_languages)>1){ ?>
@@ -56,5 +56,5 @@ include_once 'views/popups/edit_category.php';
 
 
 
-    </div>
+
 </div>
