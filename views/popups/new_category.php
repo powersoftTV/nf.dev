@@ -26,7 +26,7 @@
                 </div>
                 <div class="modal-footer main">
                     <input type="button" class="btn btn-primary btn-lg" data-dismiss="modal" value="<?=$_LANG["cancel"][$lang]; ?>">
-                    <button type="submit" class="btn btn-primary btn-lg sign-up-btn on_enter"><?=$_LANG["add"][$lang]; ?></button>
+                    <button type="submit" class="btn btn-primary btn-lg add_btn on_enter"><?=$_LANG["add"][$lang]; ?></button>
                 </div>
             </form>
             <div class="information hidden">
