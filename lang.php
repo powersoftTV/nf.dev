@@ -334,4 +334,8 @@ $_LANG["category"]["ru"]="Категория";
 
 /*-------------------------END OF HOME PAGE ----------------------------------*/
 
+$_LANG["check_category"]["en"]="This category is already exist.";
+$_LANG["check_category"]["hy"]="This category is already exist.";
+$_LANG["check_category"]["ru"]="Эта категория уже существует";
+
 ?>

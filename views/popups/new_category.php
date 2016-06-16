@@ -20,12 +20,13 @@
                             </select>
                         </div>
                     <?php } ?>
-                    <label class="required" for="story_title"><?=$_LANG["category"][$lang]; ?>:</label><input autofocus required autocomplete="true" type="text" class="form-control" id="name" name="name"><br>
+                    <label class="required" for="story_title"><?=$_LANG["category"][$lang]; ?>:</label><input autofocus autocomplete="off" type="text" class="form-control cat_name" id="name" name="name">
+					<div class="error"></div><br>
                     <label for="edit_story"><?=$_LANG["description"][$lang]; ?>:</label><textarea class="form-control" id="description" name="description"></textarea><br>
 
                 </div>
                 <div class="modal-footer main">
-                    <input type="button" class="btn btn-primary btn-lg" data-dismiss="modal" value="<?=$_LANG["cancel"][$lang]; ?>">
+                    <input autocomplete="off" type="button" class="btn btn-primary btn-lg" data-dismiss="modal" value="<?=$_LANG["cancel"][$lang]; ?>">
                     <button type="submit" class="btn btn-primary btn-lg add_btn on_enter"><?=$_LANG["add"][$lang]; ?></button>
                 </div>
             </form>

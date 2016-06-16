@@ -2,7 +2,7 @@
  * Created by User on 6/5/2016.
  */
 $(function(){
-
+	var inprocess=false;
     if ($.ui) {
         (function () {
             var oldEffect = $.fn.effect;
@@ -31,18 +31,15 @@ $(function(){
     }
 
     $('.add_btn').click(function(e){
-        var category= $.trim($('#name').val());
-        if(category==""){
-            e.preventDefault();
-            $("#name").effect( "shake", {times:4}, 1000 );
-            $("#name").css( "border-color", "red" );
-        }
+        e.preventDefault();
+        checkCat(true);
     });
 
     $('#edit_category_popup').on('show.bs.modal', function(e) {
         var dataObj = {
             cat_lng : $(e.relatedTarget).data('cat_lng'),
-            cat_id : $(e.relatedTarget).data('cat_id')
+            cat_id : $(e.relatedTarget).data('cat_id'),
+            lang:lang
         };
         $.ajax({
             type: "POST",
@@ -73,7 +70,11 @@ $(function(){
     });
     $("#name").click(function(){
         $(this).css( "border-color", "" );
+        $('#new_category_popup .error').text('');
     });
+	$('a[href="#edit_category_popup"]').click(function(){
+		$("#edit_name").css( "border-color", "" );
+	})
 
     $('.edit_cat_btn').click(function(){
         var category= $.trim($('#edit_name').val());
@@ -104,11 +105,64 @@ $(function(){
                             $('#edit_category_popup').modal('hide');
                         }
                     });
-                    //$(e.currentTarget).find('input[name="description"]').val(data.description);
-                    //$(e.currentTarget).find('span#language').text(data.language);
-                }
-                // else location.reload();
+               }
+               
             });
         }
     })
+	$('#name').on('keyup',function(){
+		checkCat();
+	})
+	$('select[name="fr_lang"]').on('change', function (e)  {
+		checkCat();
+	});
+	
+	function checkCat(issubmit){
+        if(!inprocess){
+			$('.modal.in .error').text('');
+			$('.modal.in input.cat_name').css('border-color','');
+			var language=$('select[name="fr_lang"]').find("option:selected").val();
+			var category=$('.modal.in input.cat_name').val();
+			language=$.trim(language);
+			category=$.trim(category);
+			if(category!=""){
+				    var dataObj = {
+						language:language,
+						category: category,
+						lang:lang
+					};
+                    inprocess=true;
+					$.ajax({
+						type: "POST",
+						url: ajax + 'edit-category-chk',
+						data: 'data=' + JSON.stringify(dataObj)
+					}).done(function (msg) {
+						if (msg) {
+							$('.modal.in .error').text(msg);
+							$('.modal.in input.cat_name').css('border-color','red');
+                            if(issubmit){
+                                $(".modal.in input.cat_name").effect( "shake", {times:4}, 1000 );
+                                $(".modal.in input.cat_name").css( "border-color", "red" );
+                                $(".modal.in input.cat_name").focus;
+                            }
+						}
+                        else {
+                            if (issubmit) {
+                                $(".modal.in form").submit();
+                            }
+                        }
+                        inprocess = false;
+					});
+			}
+			else{
+				inprocess=false;
+                if(issubmit){
+                    $(".modal.in input.cat_name").effect( "shake", {times:4}, 1000 );
+                    $(".modal.in input.cat_name").css( "border-color", "red" );
+                    $(".modal.in input.cat_name").focus;
+                }
+			}
+		}
+
+	}
 });
