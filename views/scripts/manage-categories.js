@@ -53,6 +53,7 @@ $(function(){
                 $(e.currentTarget).find('span#language').text(data.language);
                 $(e.currentTarget).find('span#language').attr('lng',data.lng);
                 $(e.currentTarget).find('button.edit_cat_btn').attr('cat_id',data.id);
+                $(e.currentTarget).find('button.edit_cat_btn').attr('cat_name',data.category);
             }
             else location.reload();
         });
@@ -67,6 +68,7 @@ $(function(){
 
     $("#edit_name").click(function(){
         $(this).css( "border-color", "" );
+        $('#new_category_popup .error').text('');
     });
     $("#name").click(function(){
         $(this).css( "border-color", "" );
@@ -74,6 +76,7 @@ $(function(){
     });
 	$('a[href="#edit_category_popup"]').click(function(){
 		$("#edit_name").css( "border-color", "" );
+        $('#new_category_popup .error').text('');
 	})
 
     $('.edit_cat_btn').click(function(){
@@ -110,6 +113,9 @@ $(function(){
             });
         }
     })
+    $('#edit_name').on('keyup',function(){
+        checkCat(false,$('button.edit_cat_btn').attr('cat_name'),$('span#language').attr('lng'));
+    })
 	$('#name').on('keyup',function(){
 		checkCat();
 	})
@@ -117,15 +123,24 @@ $(function(){
 		checkCat();
 	});
 	
-	function checkCat(issubmit){
+	function checkCat(issubmit, cat_val, lng){
         if(!inprocess){
+            category_value="";
+            if(cat_val){
+                category_value= $.trim(cat_val);
+            }
 			$('.modal.in .error').text('');
+            if(lng){
+                var language=lng;
+            }
+            else{
+                var language=$('select[name="fr_lang"]').find("option:selected").val();
+            }
 			$('.modal.in input.cat_name').css('border-color','');
-			var language=$('select[name="fr_lang"]').find("option:selected").val();
 			var category=$('.modal.in input.cat_name').val();
 			language=$.trim(language);
 			category=$.trim(category);
-			if(category!=""){
+			if(category!="" || category!=category_value){
 				    var dataObj = {
 						language:language,
 						category: category,
