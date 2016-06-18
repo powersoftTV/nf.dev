@@ -3,7 +3,7 @@ if(!$_user['user_id'] || !(in_array(1,$_user['roles']))){
     header('Location: '.$root_folder.$lang);
 }
 
-$category=new ManageProperties('category');
+$category=new Categories();
 $f_lang=Registry::getInstance()->getFrontLang();
 $fr_lang=$f_lang[0];
 if(isset($_REQUEST['name'])){

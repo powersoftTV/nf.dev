@@ -19,7 +19,7 @@ if($_user['user_id'] && isset($_POST['data']) && $_POST['data']) {
         $cat_description = mysqli_real_escape_string($MV, htmlspecialchars(trim($data['description'])));
     }
     if ($cat_id && $cat_lng && $cat_name) {
-        $category=new ManageProperties('category');
+        $category=new Categories();
         $cat=$category->SetProperties($cat_lng, $cat_id, $cat_name, $cat_description);
         if($cat){
             $response = json_encode($cat_name);

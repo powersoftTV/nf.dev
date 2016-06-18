@@ -122,12 +122,7 @@ class ManageProperties
         if($who=Registry::getInstance()->getUser()) {
             if(isset($who['user_id']) && $who['user_id']) {
                 $query = "
-                  INSERT INTO nf_" . $this->_propertyType . "_data (" . $this->_propertyType . "_id, language, " . $this->_propertyType . ", description,who_last_update) VALUES(" . $id . ",'" . $lang . "','" . $name . "','" . $description . "'," . $who['user_id'] . ")
-                  ON DUPLICATE KEY UPDATE
-                    " . $this->_propertyType . "='" . $name . "',description='" . $description . "',who_last_update=".$who['user_id']."
-
-                    ";
-
+                  INSERT IGNORE INTO nf_" . $this->_propertyType . "_data (" . $this->_propertyType . "_id, language, " . $this->_propertyType . ", description,who_last_update) VALUES(" . $id . ",'" . $lang . "','" . $name . "','" . $description . "'," . $who['user_id'] . ")";
                 if ($res = @mysqli_query(Registry::getInstance()->getDB(), $query)) {
                     return true;
                 }

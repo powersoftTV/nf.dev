@@ -2,7 +2,7 @@
  * Created by User on 6/5/2016.
  */
 $(function(){
-	var inprocess=false;
+	
     if ($.ui) {
         (function () {
             var oldEffect = $.fn.effect;
@@ -34,6 +34,10 @@ $(function(){
         e.preventDefault();
         checkCat(true);
     });
+	$('.edit_cat_btn').click(function(e){
+		e.preventDefault();
+        checkCat(true, $('button.edit_cat_btn').attr('cat_name'),$('span#language').attr('lng'));
+	});
 
     $('#edit_category_popup').on('show.bs.modal', function(e) {
         var dataObj = {
@@ -76,10 +80,11 @@ $(function(){
     });
 	$('a[href="#edit_category_popup"]').click(function(){
 		$("#edit_name").css( "border-color", "" );
-        $('#new_category_popup .error').text('');
+        $('#edit_category_popup .error').text('');
 	})
 
-    $('.edit_cat_btn').click(function(){
+    $('#edit_category_form').submit(function(e){
+		e.preventDefault();
         var category= $.trim($('#edit_name').val());
         var description= $.trim($('#edit_description').val());
         if(category==""){
@@ -124,7 +129,6 @@ $(function(){
 	});
 	
 	function checkCat(issubmit, cat_val, lng){
-        if(!inprocess){
             category_value="";
             if(cat_val){
                 category_value= $.trim(cat_val);
@@ -146,8 +150,7 @@ $(function(){
 						category: category,
 						lang:lang
 					};
-                    inprocess=true;
-					$.ajax({
+                    $.ajax({
 						type: "POST",
 						url: ajax + 'edit-category-chk',
 						data: 'data=' + JSON.stringify(dataObj)
@@ -166,18 +169,18 @@ $(function(){
                                 $(".modal.in form").submit();
                             }
                         }
-                        inprocess = false;
+                       
 					});
 			}
 			else{
-				inprocess=false;
+				
                 if(issubmit){
                     $(".modal.in input.cat_name").effect( "shake", {times:4}, 1000 );
                     $(".modal.in input.cat_name").css( "border-color", "red" );
                     $(".modal.in input.cat_name").focus;
                 }
 			}
-		}
+	
 
 	}
 });

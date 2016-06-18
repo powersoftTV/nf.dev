@@ -12,7 +12,7 @@ if($_user['user_id'] && isset($_POST['data']) && $_POST['data']) {
         $cat_id = mysqli_real_escape_string($MV, htmlspecialchars(trim($data['cat_id'])));
     }
     if ($cat_id && $cat_lng) {
-        $category=new ManageProperties('category');
+        $category=new Categories();
         $cat=array();
         $cat=$category->GetProperties($cat_lng, $cat_id);
         $cat['language']=$lng;

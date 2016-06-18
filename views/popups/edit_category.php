@@ -4,7 +4,7 @@
             <div class="modal-header">
                 <h4 class="modal-title"><?=$_LANG["edit_cat"][$lang];?></h4>
             </div>
-
+			<form id="edit_category_form" method="post" novalidate>	
                 <div class="modal-body main">
 
                     <div class="alert alert-danger hidden" role="alert">
@@ -25,7 +25,7 @@
                     <input type="button" class="btn btn-primary btn-lg" data-dismiss="modal" value="<?=$_LANG["cancel"][$lang]; ?>">
                     <button cat_id="" cat_name="" type="submit" class="btn btn-primary btn-lg edit_cat_btn on_enter"><?=$_LANG["save"][$lang]; ?></button>
                 </div>
-
+			</form>
             <div class="information hidden">
                 <div class="modal-body"></div>
                 <div class="modal-footer">

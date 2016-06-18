@@ -19,7 +19,7 @@
                         </select><br> 
                 <?php } ?>
                 <?php 
-                    $categories=new categories; 
+                    $categories=new Categories(); 
                 ?>
                 <label class="required" for="story_title"><?=$_LANG["title"][$lang]; ?>:</label><input autofocus required autocomplete="true" type="text" class="form-control" id="story_title"><br>
                 <label for="edit_story"><?=$_LANG["story"][$lang]; ?>:</label><textarea class="form-control" id="edit_story"></textarea><br>

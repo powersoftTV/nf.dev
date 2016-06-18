@@ -15,7 +15,7 @@ if($_user['user_id'] && isset($_POST['data']) && $_POST['data']) {
     }
     
     if ($cat_lng && $cat_name) {
-        $category=new ManageProperties('category');
+        $category=new Categories();
         $cat=$category->ListProperties(array($cat_lng), array($cat_name));
         if($cat){
             $response = $_LANG["check_category"][$lang];
