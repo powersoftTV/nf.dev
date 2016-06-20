@@ -1,11 +1,14 @@
 <?php
 
 /**
- * Created by PhpStorm.
- * User: User
- * Date: 5/8/2016
- * Time: 10:45 AM
+ * Registry Class
+ *
+ * @author    Karen Martirosyan <info@powersoft.tv>
+ * @copyright Copyright (c) 2014-2016
+ * @version   1.0
  */
+
+
 class Registry
 {
     protected static $instance;

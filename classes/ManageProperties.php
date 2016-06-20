@@ -1,29 +1,25 @@
 <?php
 
 /**
- * Created by PhpStorm.
- * User: User
- * Date: 5/1/2016
- * Time: 1:48 PM
+ * ManageProperties Abstract Class
+ *
+ * @author    Karen Martirosyan <info@powersoft.tv>
+ * @copyright Copyright (c) 2014-2016
+ * @version   1.0
  */
-class ManageProperties
-{
-    private $_propertyType;
 
-        function __construct($property)
-        {
-            if(isset($property)){
-                $this->setPropertyType($property);
-            }
-            else return false;
-        }
+abstract class ManageProperties
+{
+    protected $_propertyType;
 
     public  function setPropertyType($property){
         $this->_propertyType=$property;
     }
 
+    abstract protected function ListQuery($where);
 
-    public function ListProperties($lang=array(), $name=array()){
+
+    public function ListProperties($lang=array(), $name=array(), $prop_id=array()){
         $where="";
         if(count($lang)){
             foreach($lang as $v) {
@@ -35,28 +31,12 @@ class ManageProperties
                 $where .= " AND t2.".$this->_propertyType."='".$v."'";
             }
         }
-        $query="
-            SELECT
-                  t2.".$this->_propertyType."_id
-                , t2.".$this->_propertyType."
-                , t2.description
-                , t2.language
-                , t2.who_last_update
-                , t2.last_updated_date
-                , t1.is_removed_from_list
-                , t3.username
-            FROM
-                nf_".$this->_propertyType." t1
-            LEFT JOIN
-                nf_".$this->_propertyType."_data t2 ON t2.".$this->_propertyType."_id=t1.id
-            LEFT JOIN
-                nf_users t3 ON t2.who_last_update=t3.user_id
-            WHERE
-                true ".$where."
-            ORDER BY
-                t1.id DESC
-
-        ";
+        if(count($prop_id)){
+            foreach($prop_id as $v) {
+                $where .= " AND t2.".$this->_propertyType."_id ='".$v."'";
+            }
+        }
+        $query=$this->ListQuery($where);
         $prop=array();
         if($res=@mysqli_query(Registry::getInstance()->getDB(),$query)){
             while($_res=@mysqli_fetch_assoc($res)){
@@ -79,15 +59,30 @@ class ManageProperties
                     }
                     $prop = $this->ListProperties(array($lang), array($name));
                     if (!$prop || !count($prop)) {
-                        $query = "INSERT INTO nf_".$this->_propertyType." (is_removed_from_list) VALUES(0)";
-                        if (@mysqli_query(Registry::getInstance()->getDB(), $query)) {
-                            $prop_id = mysqli_insert_id(Registry::getInstance()->getDB());
+                        //$query = "INSERT INTO nf_".$this->_propertyType." (is_removed_from_list) VALUES(0)";
+                        $db = MysqliDb::getInstance();
+                        $res=$db->insert($this->_propertyType,array('is_removed_from_list'=>0));
+                        if($res){
+                            $prop_id=$res;
                         }
+//                        if (@mysqli_query(Registry::getInstance()->getDB(), $query)) {
+//                            $prop_id = mysqli_insert_id(Registry::getInstance()->getDB());
+//                        }
                         else return false;
-                        $query = "INSERT INTO nf_".$this->_propertyType ."_data (" . $this->_propertyType . "_id, language, " . $this->_propertyType . ", description,who_last_update) VALUES(" . $prop_id . ",'" . $lang . "','" . $name . "','" . $description . "'," . $who['user_id'] . ")";
-                        if (@mysqli_query(Registry::getInstance()->getDB(), $query)) {
+                        $data=array(
+                            $this->_propertyType.'_id'=>$prop_id,
+                            'language'=>$lang,
+                            $this->_propertyType=>$name,
+                            'description'=>$description,
+                            'who_last_update'=>$who['user_id']
+                        );
+                        if($db->insert($this->_propertyType.'_data',$data)){
                             return "success";
                         }
+//                        $query = "INSERT INTO nf_".$this->_propertyType ."_data (" . $this->_propertyType . "_id, language, " . $this->_propertyType . ", description,who_last_update) VALUES(" . $prop_id . ",'" . $lang . "','" . $name . "','" . $description . "'," . $who['user_id'] . ")";
+//                        if (@mysqli_query(Registry::getInstance()->getDB(), $query)) {
+//                            return "success";
+//                        }
                         else return false;
                     } else return false;
 
@@ -121,12 +116,38 @@ class ManageProperties
     public function SetProperties($lang, $id, $name, $description){
         if($who=Registry::getInstance()->getUser()) {
             if(isset($who['user_id']) && $who['user_id']) {
-                $query = "
-                  INSERT IGNORE INTO nf_" . $this->_propertyType . "_data (" . $this->_propertyType . "_id, language, " . $this->_propertyType . ", description,who_last_update) VALUES(" . $id . ",'" . $lang . "','" . $name . "','" . $description . "'," . $who['user_id'] . ")";
-                if ($res = @mysqli_query(Registry::getInstance()->getDB(), $query)) {
-                    return true;
+                $this_prop=$this->ListProperties(array($lang),array(), array($id));
+                $db=MysqliDb::getInstance();
+                if($this_prop){
+                    $data=array(
+                        $this->_propertyType=>$name,
+                        'description'=>$description,
+                        'who_last_update'=>$who['user_id']
+                    );
+                    if ($db->where($this->_propertyType.'_id',$id)->where('language',$lang)->update($this->_propertyType.'_data',$data)){
+                        return $name;
+                    }
+                    else return false;
                 }
-                else return false;
+                else{
+                    $data=array(
+                        $this->_propertyType.'_id'=>$id,
+                        'language'=>$lang,
+                        $this->_propertyType=>$name,
+                        'description'=>$description,
+                        'who_last_update'=>$who['user_id']
+                    );
+                    if ($db->insert($this->_propertyType.'_data',$data)){
+                        return true;
+                    }
+                    else return false;
+                }
+//                $query = "
+//                  INSERT IGNORE INTO nf_" . $this->_propertyType . "_data (" . $this->_propertyType . "_id, language, " . $this->_propertyType . ", description,who_last_update) VALUES(" . $id . ",'" . $lang . "','" . $name . "','" . $description . "'," . $who['user_id'] . ")";
+//                if ($res = @mysqli_query(Registry::getInstance()->getDB(), $query)) {
+//                    return true;
+//                }
+//                else return false;
             }
             else return false;
         }

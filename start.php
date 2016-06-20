@@ -54,4 +54,13 @@
     Registry::getInstance()->setLang($languages);
     Registry::getInstance()->setFrontLang($front_languages);
 
+$db = new MysqliDb (Array (
+    'host' => $db_host,
+    'username' => $db_user,
+    'password' => $db_pass,
+    'db'=> $db_name,
+    'port' => 3306,
+    'prefix' => 'nf_',
+    'charset' => 'utf8'));
+
 ?>
