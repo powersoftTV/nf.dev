@@ -59,15 +59,11 @@ abstract class ManageProperties
                     }
                     $prop = $this->ListProperties(array($lang), array($name));
                     if (!$prop || !count($prop)) {
-                        //$query = "INSERT INTO nf_".$this->_propertyType." (is_removed_from_list) VALUES(0)";
                         $db = MysqliDb::getInstance();
                         $res=$db->insert($this->_propertyType,array('is_removed_from_list'=>0));
                         if($res){
                             $prop_id=$res;
                         }
-//                        if (@mysqli_query(Registry::getInstance()->getDB(), $query)) {
-//                            $prop_id = mysqli_insert_id(Registry::getInstance()->getDB());
-//                        }
                         else return false;
                         $data=array(
                             $this->_propertyType.'_id'=>$prop_id,
@@ -79,10 +75,6 @@ abstract class ManageProperties
                         if($db->insert($this->_propertyType.'_data',$data)){
                             return "success";
                         }
-//                        $query = "INSERT INTO nf_".$this->_propertyType ."_data (" . $this->_propertyType . "_id, language, " . $this->_propertyType . ", description,who_last_update) VALUES(" . $prop_id . ",'" . $lang . "','" . $name . "','" . $description . "'," . $who['user_id'] . ")";
-//                        if (@mysqli_query(Registry::getInstance()->getDB(), $query)) {
-//                            return "success";
-//                        }
                         else return false;
                     } else return false;
 
@@ -92,25 +84,6 @@ abstract class ManageProperties
         }
         else return false;
 
-    }
-
-    public function GetProperties($lang, $id){
-        $query="
-            SELECT
-                ".$this->_propertyType.",description
-            FROM
-                nf_".$this->_propertyType."_data
-            WHERE
-                ".$this->_propertyType."_id=".$id." AND language='".$lang."'
-        ";
-        $prop=array();
-        if($res=@mysqli_query(Registry::getInstance()->getDB(),$query)){
-            if($_res=@mysqli_fetch_assoc($res)){
-                $prop=$_res;
-            }
-        }
-        else return false;
-        return $prop;
     }
 
     public function SetProperties($lang, $id, $name, $description){
@@ -124,7 +97,7 @@ abstract class ManageProperties
                         'description'=>$description,
                         'who_last_update'=>$who['user_id']
                     );
-                    if ($db->where($this->_propertyType.'_id',$id)->where('language',$lang)->update($this->_propertyType.'_data',$data)){
+                    if($db->where($this->_propertyType.'_id',$id)->where('language',$lang)->update($this->_propertyType.'_data',$data)){
                         return $name;
                     }
                     else return false;
@@ -142,12 +115,7 @@ abstract class ManageProperties
                     }
                     else return false;
                 }
-//                $query = "
-//                  INSERT IGNORE INTO nf_" . $this->_propertyType . "_data (" . $this->_propertyType . "_id, language, " . $this->_propertyType . ", description,who_last_update) VALUES(" . $id . ",'" . $lang . "','" . $name . "','" . $description . "'," . $who['user_id'] . ")";
-//                if ($res = @mysqli_query(Registry::getInstance()->getDB(), $query)) {
-//                    return true;
-//                }
-//                else return false;
+
             }
             else return false;
         }

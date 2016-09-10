@@ -7,9 +7,11 @@
     include_once 'authenticate.php';
 	$response="";
     reset($_GET);
+    $is_show=false;
     $get_name=key($_GET);
     if($get_name && $get_name!=""){
         $new_path=__DIR__.'/ajax/';
+        $is_show=true;
         include_once $new_path.$get_name.'.php';
     }
     echo $response;

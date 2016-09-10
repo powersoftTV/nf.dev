@@ -1,5 +1,7 @@
 $(function(){
     if(user_id!=""){
+        if(lang=='fr')lang='fr_FR';
+        if(lang=='ka')lang='ka_GE';
         tinymce.init({
               selector: '#edit_story',
               height: 300,

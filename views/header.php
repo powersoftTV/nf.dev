@@ -1,3 +1,4 @@
+<?php if($is_show_hf){ ?>
 <!DOCTYPE html>
 <html lang="<? echo $lang; ?>">
 <head>
@@ -47,9 +48,9 @@
             </button>
             <?php } 
                 else{ ?>
-                 <button data-toggle="modal" data-target="#sign-up-modal" type="button" class="btn btn-primary navbar-toggle"><span class="glyphicon glyphicon-user"></span> <?php echo $_LANG["sign_up"][$lang]; ?></button>
+                 <button data-toggle="modal" data-target="#sign-up-modal" type="button" class="btn btn-primary navbar-toggle"><span class="glyphicon glyphicon-user"></span>!!!_Sign Up_!!!</button>
             <?php } ?>
-            <a class="navbar-brand" href="<?=$_LANG["company_url"][$lang] ?>"><?=$_LANG["company_name"][$lang]  ?></a>
+            <a class="navbar-brand" href="#">!!!_Company Name_!!!</a>
             <?php if($_user['user_id']){ ?>
             <button  type="button" class="btn btn-primary me_btn text-right"><div><span class="glyphicon glyphicon-user"></span> <?php echo $_user['username']; ?></div><small><?php echo $_user['group_name']; ?></small></button>
             <?php } ?>
@@ -58,31 +59,34 @@
         <?php if($_user['user_id']){ ?>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="nav navbar-nav navbar-right">
-                <li class="<?php if($act=='home') echo "active"; ?> text-center"><a href="<?php echo $root_folder.$lang."/"; ?>"><?php echo $_LANG["home"][$lang]; ?></a></li>
-                <?php if(in_array(1,$_user['roles']) || in_array(2,$_user['roles']) || in_array(3,$_user['roles'])){ ?>
+                <li class="<?php if($act=='home') echo "active"; ?> text-center"><a href="<?php echo $root_folder.$lang."/"; ?>">!!!_Home_!!!</a></li>
+                <?php if(in_array(1,$_user['roles']) || in_array(2,$_user['roles']) || in_array(3,$_user['roles']) || in_array(4,$_user['roles'])){ ?>
                 <li class="dropdown">
-                    <a class="text-center" href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $_LANG["manage"][$lang]; ?><b class="caret"></b></a>
+                    <a class="text-center" href="#" class="dropdown-toggle" data-toggle="dropdown">!!!_Manage_!!!<b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <?php if(in_array(1,$_user['roles'])){ ?>
-                            <li class="<?php if($act=='manage-categories') echo "active"; ?> text-center"><a href="<?php echo $root_folder.$lang."/manage-categories"; ?>"><?php echo $_LANG["categories"][$lang]; ?></a></li>
+                            <li class="<?php if($act=='manage-categories') echo "active"; ?> text-center"><a href="<?php echo $root_folder.$lang."/manage-categories"; ?>">!!!_Categories_!!!</a></li>
                         <?php } ?>
                         <?php if(in_array(2,$_user['roles'])){ ?>
-                            <li class="<?php if($act=='manage-users') echo "active"; ?> text-center"><a href="<?php echo $root_folder.$lang."/manage-users"; ?>"><?php echo $_LANG["users"][$lang]; ?></a></li>
+                            <li class="<?php if($act=='manage-users') echo "active"; ?> text-center"><a href="<?php echo $root_folder.$lang."/manage-users"; ?>">!!!_Users_!!!</a></li>
                         <?php } ?>
                         <?php if(in_array(3,$_user['roles'])){ ?>
-                            <li class="<?php if($act=='manage-groups') echo "active"; ?> text-center"><a href="<?php echo $root_folder.$lang."/manage-groups"; ?>"><?php echo $_LANG["groups"][$lang]; ?></a></li>
+                            <li class="<?php if($act=='manage-groups') echo "active"; ?> text-center"><a href="<?php echo $root_folder.$lang."/manage-groups"; ?>">!!!_Groups_!!!</a></li>
+                        <?php } ?>
+                        <?php if(in_array(4,$_user['roles'])){ ?>
+                            <li class="<?php if($act=='manage-translations') echo "active"; ?> text-center"><a href="<?php echo $root_folder.$lang."/manage-translations"; ?>">!!!_Translations_!!!</a></li>
                         <?php } ?>
                     </ul>
                 </li>
                 <?php } ?>
-                <li class="text-center"><a class="logout" href="#"><?php echo $_LANG["log_out"][$lang]; ?></a></li>
+                <li class="text-center"><a class="logout" href="#">!!!_Log Out_!!!</a></li>
             </ul>
         </div>
         <?php } 
         else{ ?>
             <div class="collapse navbar-collapse" id="navbarCollapse">
              <ul class="nav navbar-nav navbar-right">
-                <li><button data-toggle="modal" data-target="#sign-up-modal" type="button" class="btn btn-primary signup_btn"><span class="glyphicon glyphicon-user"></span> <?php echo $_LANG["sign_up"][$lang]; ?></button></li>
+                <li><button data-toggle="modal" data-target="#sign-up-modal" type="button" class="btn btn-primary signup_btn"><span class="glyphicon glyphicon-user"></span> !!!_Sign Up_!!!</button></li>
         
             </ul>
             </div>
@@ -98,4 +102,4 @@
         </div>
       </div>
     <div class="container main">
-    
+  <?php } ?>

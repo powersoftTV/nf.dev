@@ -1,0 +1,9 @@
+li.words_list:nth-child(even){
+    /*background-color: #dcdcdc;*/
+}
+li.words_list:nth-child(odd){
+    background-color: #f7f7f9;
+}
+.translations{
+    margin: 20px 0 20px 0;
+}

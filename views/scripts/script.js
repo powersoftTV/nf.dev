@@ -165,20 +165,20 @@ $(window).resize(function() {
 });
 
 //var count = 0;
-if (typeof history.pushState === "function") { 
-   history.pushState("back", null, null);          
-   window.onpopstate = function () { 
-      history.pushState('back', null, null);              
-      //if(count == 1){
-          $('.modal').each(function(){
-            if($(this).data('bs.modal') && $(this).data('bs.modal').isShown){
-                event.preventDefault();
-                $(this).modal('hide');
-            }
-          })
-     // }
-   }; 
-}
+//if (typeof history.pushState === "function") {
+//   history.pushState("back", null, null);
+//   window.onpopstate = function () {
+//      history.pushState('back', null, null);
+//      //if(count == 1){
+//          $('.modal').each(function(){
+//            if($(this).data('bs.modal') && $(this).data('bs.modal').isShown){
+//                event.preventDefault();
+//                $(this).modal('hide');
+//            }
+//          })
+//     // }
+//   };
+//}
 //setTimeout(function(){count = 1;},200);
 $(document).ajaxSend(function(event, request, settings) {
      $('#loading-indicator').show();
@@ -203,8 +203,12 @@ $(document).keypress(function (e) {
           }
  });   
 
- $(function(){   
-    
+ $(function(){
+     if(user_id==""){
+         $('button').click(function(){
+             location.reload();
+         })
+     }
     var tkn=readCookie('tkn')
     if(tkn){
         
@@ -217,7 +221,7 @@ $(document).keypress(function (e) {
         if(username!=""){
             $.ajax({
                 type: "POST",
-                url: ajax+'check_field_exists&check_username='+username
+                url: ajax+'check_field_exists&check_username='+username+'&lang='+lang
              })
             .done(function(msg){
                 if(msg != ''){
@@ -236,7 +240,7 @@ $(document).keypress(function (e) {
         if(email!=""){
             $.ajax({
                 type: "POST",
-                url: ajax+'check_field_exists&check_email='+email
+                url: ajax+'check_field_exists&check_email='+email+'&lang='+lang
              })
             .done(function(msg){
                 if(msg != ''){
@@ -255,7 +259,7 @@ $(document).keypress(function (e) {
         if(phone!=""){
             $.ajax({
                 type: "POST",
-                url: ajax+'check_field_exists&check_phone='+phone
+                url: ajax+'check_field_exists&check_phone='+phone+'&lang='+lang
              })
             .done(function(msg){
                 if(msg != ''){
@@ -296,7 +300,7 @@ $(document).keypress(function (e) {
         
         $.ajax({
             type: "POST",
-            url: ajax+'signup',
+            url: ajax+'signup'+'&lang='+lang,
             data: 'data='+Base64.encode(JSON.stringify(dataObj))
         }).done(function(msg){
                     var data = JSON.parse(msg);
@@ -400,7 +404,7 @@ $(document).keypress(function (e) {
 
          $.ajax({
              type: "POST",
-             url: ajax+'login',
+             url: ajax+'login'+'&lang='+lang,
              data: 'data='+Base64.encode(JSON.stringify(dataObj))
          }).done(function(msg){
              var data = JSON.parse(msg);

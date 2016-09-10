@@ -1,5 +1,5 @@
 <?php
-if($_user['user_id'] && isset($_POST['data']) && $_POST['data']) {
+if($_user['user_id'] && isset($_POST['data']) && $_POST['data'] && $is_show) {
     $cat_id = false;
     $cat_lng = false;
     $empty = false;
@@ -14,7 +14,10 @@ if($_user['user_id'] && isset($_POST['data']) && $_POST['data']) {
     if ($cat_id && $cat_lng) {
         $category=new Categories();
         $cat=array();
-        $cat=$category->GetProperties($cat_lng, $cat_id);
+        $res=$category->ListProperties(array($cat_lng), array(), array($cat_id));
+        if(isset($res[0])) {
+            $cat=$res[0];
+        }
         $cat['language']=$lng;
         $cat['lng']=$data['cat_lng'];
         $cat['id']=$data['cat_id'];

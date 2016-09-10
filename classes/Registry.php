@@ -13,8 +13,13 @@ class Registry
 {
     protected static $instance;
     protected $_lang = array();
+    protected $_language;
+    protected $_rootfolder;
     protected $_frontlang = array();
+    protected $_langtitles = array();
     protected $_MV;
+    protected $_debug;
+    protected $_langlearn;
     protected $_user = array();
     protected function __construct()
     {
@@ -45,6 +50,23 @@ class Registry
         }
         throw new RuntimeException ('Main database resource not found in the registry');
     }
+    public function setDebug($debug)
+    {
+        if (isset($this->_debug)) {
+            throw new RuntimeException('Debug variable has already been set.');
+        }
+        else {
+            $this->_debug = $debug;
+        }
+    }
+    public function getDebug()
+    {
+        if (isset($this->_debug)) {
+            return $this->_debug;
+        }
+        throw new RuntimeException ('Debug variable not found in the registry');
+    }
+
     public function setLang($lang)
     {
         if (count($this->_lang)) {
@@ -60,6 +82,22 @@ class Registry
             return $this->_lang;
         }
         throw new RuntimeException ('Language resource not found in the registry');
+    }
+    public function setLanguage($language)
+    {
+        if (count($this->_language)) {
+            throw new RuntimeException('Site Language has already been set.');
+        }
+        else {
+            $this->_language = $language;
+        }
+    }
+    public function getLanguage()
+    {
+        if (count($this->_language)) {
+            return $this->_language;
+        }
+        throw new RuntimeException ('Site Language resource not found in the registry');
     }
     public function setFrontLang($frontlang)
     {
@@ -77,6 +115,24 @@ class Registry
         }
         throw new RuntimeException ('Front Language resource not found in the registry');
     }
+
+    public function setLangTitle($language)
+    {
+        if (count($this->_langtitles)) {
+            throw new RuntimeException('Site Language Title has already been set.');
+        }
+        else {
+            $this->_langtitles = $language;
+        }
+    }
+    public function getLangTitle($lang)
+    {
+        if (isset($this->_langtitles[$lang]) && $this->_langtitles[$lang]) {
+            return $this->_langtitles[$lang];
+        }
+        return $lang;
+    }
+
     public function setUser($_user)
     {
         if (count($this->_user)) {
@@ -92,5 +148,10 @@ class Registry
             return $this->_user;
         }
         return false;
+    }
+    public function getRootFolder()
+    {
+        $this->_rootfolder=str_replace('index.php','',$_SERVER['SCRIPT_NAME']);
+        return $this->_rootfolder=str_replace('ajax.php','',$this->_rootfolder);
     }
 }

@@ -25,7 +25,7 @@ if($_user['user_id']){
             ";
             if($res=@mysqli_query($MV,$query)){
                 if($_res=@mysqli_fetch_assoc($res)){
-                    if($_res['is_email_confirmed']>0)$msg=$_LANG['email_already_confirmed'][$lang];
+                    if($_res['is_email_confirmed']>0)$msg='!!!_Your email has already confirmed._!!!';
                     else {
                         $query="
                             UPDATE nf_users
@@ -33,7 +33,7 @@ if($_user['user_id']){
                             WHERE user_id='".$_res['user_id']."'
                         ";
                         if(@mysqli_query($MV,$query)){
-                            $msg=$_LANG['confirm_email_success'][$lang];
+                            $msg='!!!_Your email is successfully confirmed!_!!!';
                         }
                     }
                 }

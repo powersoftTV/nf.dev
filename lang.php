@@ -141,7 +141,7 @@ $_LANG["check_email_message"]["en"]="This email is already registered.";
 $_LANG["check_email_message"]["hy"]="This email is already registered.";
 $_LANG["check_email_message"]["ru"]="This email is already registered.";
 
-$_LANG["check_username_message"]["en"]="This user name is already taken.";
+$_LANG["check_username_message"]["en"]="c";
 $_LANG["check_username_message"]["hy"]="This user name is already taken";
 $_LANG["check_username_message"]["ru"]="This user name is already taken";
 

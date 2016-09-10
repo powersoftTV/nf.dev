@@ -1,5 +1,5 @@
 <?php
-if($_user['user_id'] && isset($_POST['data']) && $_POST['data']) {
+if($_user['user_id'] && isset($_POST['data']) && $_POST['data']  && $is_show) {
     $cat_id = false;
     $cat_lng = false;
     $cat_name=false;

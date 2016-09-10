@@ -34,14 +34,14 @@ if($_user['user_id']){
                         if((strtotime($_res['date'])+7200)>=time()){
                             $forgot_user_id=$_res['user_id'];
                         }
-                        else $msg=$_LANG['link_expired'][$lang];
+                        else $msg='!!!_Sorry but your link has expired._!!!';
                     }
-                    else $msg=$_LANG['error'][$lang];
+                    else $msg='!!!_Error. Something goes wrong..._!!!';
                 }
-                else $msg=$_LANG['error'][$lang];
+                else $msg='!!!_Error. Something goes wrong..._!!!';
             
         }
-        else $msg=$_LANG['error'][$lang];
+        else $msg='!!!_Error. Something goes wrong..._!!!';
     }
-    else $msg=$_LANG['error'][$lang];
+    else $msg='!!!_Error. Something goes wrong..._!!!';
 ?>

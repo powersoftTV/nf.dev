@@ -1,5 +1,5 @@
 <?php
-if($_user['user_id'] && isset($_POST['data']) && $_POST['data']) {
+if($_user['user_id'] && isset($_POST['data']) && $_POST['data']  && $is_show) {
     $cat_lng = false;
     $cat_name=false;
     $empty = false;
@@ -18,7 +18,7 @@ if($_user['user_id'] && isset($_POST['data']) && $_POST['data']) {
         $category=new Categories();
         $cat=$category->ListProperties(array($cat_lng), array($cat_name));
         if($cat){
-            $response = $_LANG["check_category"][$lang];
+            $response = '!!!_This category is already exist._!!!';
         }
     }
 }

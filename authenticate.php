@@ -55,12 +55,12 @@
                         setcookie("tkn", $users_token, $cookie_exp,'/','.'.DOMAIN);
                         Registry::getInstance()->setUser($_user);
                     }
-                    else $_errors[] = $_LANG['db_error'][$lang];
+                    else $_errors[] = '!!!_DB Error_!!!';
                 }
-                else $_errors[] = $_LANG['db_error'][$lang];
+                else $_errors[] = '!!!_DB Error_!!!';
             }
         }
-        else $_errors[] = $_LANG['db_error'][$lang];
+        else $_errors[] = '!!!_DB Error_!!!';
     }
     
 ?>

@@ -1,5 +1,5 @@
 <?php
-if(!$_user['user_id'] || !(in_array(1,$_user['roles']))){
+if(!$_user['user_id'] || !(in_array(1,$_user['roles'])) || !$is_show){
     header('Location: '.$root_folder.$lang);
 }
 include_once 'views/popups/new_category.php';
@@ -7,8 +7,8 @@ include_once 'views/popups/edit_category.php';
 ?>
 <div class="container page">
     <div class="container">
-        <h1><?=$_LANG["categories"][$lang];?> <span class="badge"><?php echo $total; ?></span></h1>
-        <div class="button_wrapper"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#new_category_popup"><?=$_LANG["new"][$lang]." ".$_LANG["category"][$lang];?></button></div>
+        <h1>!!!_Categories_!!! <span class="badge"><?php echo $total; ?></span></h1>
+        <div class="button_wrapper"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#new_category_popup">!!!_New Category_!!!</button></div>
     </div>
         <table id="cat_table"  class="table table-hover table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
@@ -17,9 +17,7 @@ include_once 'views/popups/edit_category.php';
                 <?php foreach($front_languages as $v){ ?>
                     <th><?php echo show_lang($v,$lang ); ?></th>
                 <?php } ?>
-                    <th class="hidden">
-                        <?php echo $_LANG["updated"][$lang]; ?>
-                    </th>
+                    <th class="hidden">!!!_Updated_!!!</th>
             </tr>
             <?php } ?>
             </thead>
@@ -30,7 +28,7 @@ include_once 'views/popups/edit_category.php';
                             <?php foreach($front_languages as $v){ ?>
                                 <td>
                                     <?php if(isset($val['category'][$v])){ ?>
-                                        <a next-title="<?php echo $_LANG['edit_cat'][$lang] ?>" title="<?php echo $_LANG['edit_cat'][$lang] ?>" data-cat_id="<?php echo $k; ?>" data-cat_lng="<?php echo $v; ?>" data-toggle="modal"  href="#edit_category_popup">
+                                        <a next-title="!!!_Edit Category_!!!" title="!!!_Edit Category_!!!" data-cat_id="<?php echo $k; ?>" data-cat_lng="<?php echo $v; ?>" data-toggle="modal"  href="#edit_category_popup">
                                             <?php echo $val['category'][$v]; ?>
                                         </a>
                                         <?php
@@ -39,7 +37,7 @@ include_once 'views/popups/edit_category.php';
                                         }
                                         ?>
                                     <?php } else { ?>
-                                        <a next-title="<?php echo $_LANG['edit_cat'][$lang] ?>" title="<?php echo $_LANG['add'][$lang] ?>" data-cat_id="<?php echo $k; ?>" data-cat_lng="<?php echo $v; ?>" data-toggle="modal" href="#edit_category_popup"><span class="glyphicon glyphicon-plus"></span></a>
+                                        <a next-title="!!!_Edit Category_!!!" title="!!!_Add_!!!" data-cat_id="<?php echo $k; ?>" data-cat_lng="<?php echo $v; ?>" data-toggle="modal" href="#edit_category_popup"><span class="glyphicon glyphicon-plus"></span></a>
                                     <?php } ?>
                                 </td>
                             <?php } ?>

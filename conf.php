@@ -15,9 +15,18 @@
 
     define('TIMEZONE', 'Asia/Yerevan');
 
-    $languages=array('en','ru','hy');
+    $languages=array('en','ru','hy','fr','ka');
+    $lang_titles=array(
+        'en'=>'!!!_English_!!!',
+        'ru'=>'!!!_Russian_!!!',
+        'hy'=>'!!!_Armenian_!!!',
+        'fr'=>'!!!_French_!!!',
+        'ka'=>'!!!_Georgian_!!!',
+    );
     $front_languages=array('en','ru','hy');
 
+    $debug=true;
+    $yandex_translate_key='trnsl.1.1.20160717T173741Z.90dc9f75eafb4a84.b1384295557cd6b54fbd89da5fabf0cd4cbe261b';
     $VERSION=1.02;
     
 ?>

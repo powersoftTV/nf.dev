@@ -47,7 +47,7 @@ $(function(){
         };
         $.ajax({
             type: "POST",
-            url: ajax+'edit-category',
+            url: ajax+'edit-category'+'&lang='+lang,
             data: 'data='+JSON.stringify(dataObj)
         }).done(function(msg){
             if(msg) {
@@ -100,7 +100,7 @@ $(function(){
             };
             $.ajax({
                 type: "POST",
-                url: ajax + 'edit-category-save',
+                url: ajax + 'edit-category-save'+'&lang='+lang,
                 data: 'data=' + JSON.stringify(dataObj)
             }).done(function (msg) {
                 if (msg) {
@@ -129,7 +129,7 @@ $(function(){
 	});
 	
 	function checkCat(issubmit, cat_val, lng){
-            category_value="";
+            var category_value="";
             if(cat_val){
                 category_value= $.trim(cat_val);
             }
@@ -144,42 +144,48 @@ $(function(){
 			var category=$('.modal.in input.cat_name').val();
 			language=$.trim(language);
 			category=$.trim(category);
-			if(category!="" || category!=category_value){
-				    var dataObj = {
-						language:language,
-						category: category,
-						lang:lang
-					};
+            if(category!=category_value || category_value=="") {
+                if (category != "") {
+                    var dataObj = {
+                        language: language,
+                        category: category,
+                        lang: lang
+                    };
                     $.ajax({
-						type: "POST",
-						url: ajax + 'edit-category-chk',
-						data: 'data=' + JSON.stringify(dataObj)
-					}).done(function (msg) {
-						if (msg) {
-							$('.modal.in .error').text(msg);
-							$('.modal.in input.cat_name').css('border-color','red');
-                            if(issubmit){
-                                $(".modal.in input.cat_name").effect( "shake", {times:4}, 1000 );
-                                $(".modal.in input.cat_name").css( "border-color", "red" );
+                        type: "POST",
+                        url: ajax + 'edit-category-chk'+'&lang='+lang,
+                        data: 'data=' + JSON.stringify(dataObj)
+                    }).done(function (msg) {
+                        if (msg) {
+                            $('.modal.in .error').text(msg);
+                            $('.modal.in input.cat_name').css('border-color', 'red');
+                            if (issubmit) {
+                                $(".modal.in input.cat_name").effect("shake", {times: 4}, 1000);
+                                $(".modal.in input.cat_name").css("border-color", "red");
                                 $(".modal.in input.cat_name").focus;
                             }
-						}
+                        }
                         else {
                             if (issubmit) {
                                 $(".modal.in form").submit();
                             }
                         }
-                       
-					});
-			}
-			else{
-				
-                if(issubmit){
-                    $(".modal.in input.cat_name").effect( "shake", {times:4}, 1000 );
-                    $(".modal.in input.cat_name").css( "border-color", "red" );
-                    $(".modal.in input.cat_name").focus;
+
+                    });
                 }
-			}
+                else {
+                    if (issubmit) {
+                        $(".modal.in input.cat_name").effect("shake", {times: 4}, 1000);
+                        $(".modal.in input.cat_name").css("border-color", "red");
+                        $(".modal.in input.cat_name").focus;
+                    }
+                }
+            }
+            else {
+                if (issubmit) {
+                    $(".modal.in form").submit();
+                }
+            }
 	
 
 	}
