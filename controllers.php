@@ -9,7 +9,7 @@
 	}
     else{
          $act='home';
-         include_once $root_folder.'controllers/home.php' ;
+         include_once __DIR__.'/'.'controllers/home.php' ;
     }
 
 ?>
