@@ -27,6 +27,6 @@
 
     $debug=true;
     $yandex_translate_key='trnsl.1.1.20160717T173741Z.90dc9f75eafb4a84.b1384295557cd6b54fbd89da5fabf0cd4cbe261b';
-    $VERSION=1.03;
+    $VERSION=1.04;
     
 ?>

@@ -46,7 +46,7 @@
 	if(!@mysqli_query($MV,$query)){
 		 $_errors[] = '!!!_DB Error_!!!';
 	}
-    
+
     set_include_path(get_include_path(). PATH_SEPARATOR .$root_folder);
 	spl_autoload_register(function ($class_name) {
         include_once "classes/".$class_name.'.php';

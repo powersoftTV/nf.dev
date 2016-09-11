@@ -9,6 +9,7 @@
                 $is_show=true;
                 include_once 'views/'.$act.'.php';
             }
+
         }
         else{
         ?>

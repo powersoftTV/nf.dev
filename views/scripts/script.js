@@ -206,7 +206,7 @@ $(document).keypress(function (e) {
  $(function(){
      if(user_id==""){
          $('button').click(function(){
-             location.reload();
+            // location.reload();
          })
      }
     var tkn=readCookie('tkn')
@@ -409,7 +409,7 @@ $(document).keypress(function (e) {
          }).done(function(msg){
              var data = JSON.parse(msg);
              if(data.error=="" && data.error_login=="" && data.error_password==""){
-                 location.reload();
+                location.reload();
              }
              else{
                  if(data.error!=""){

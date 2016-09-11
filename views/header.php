@@ -32,6 +32,7 @@
 <body>
     <img src="<?=$root_folder?>views/images/ajax-loader.gif" id="loading-indicator" style="display:none" >
     <?php if(!$_user['user_id']){
+        $is_show=true;
         include_once 'views/popups/signup.php';
         include_once 'views/popups/forgot_password.php';
     } ?>
