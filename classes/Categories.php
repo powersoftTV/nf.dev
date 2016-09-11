@@ -10,6 +10,7 @@
 
 class Categories extends ManageProperties 
 {
+
    function __construct()
         {
          $this->setPropertyType('category');
