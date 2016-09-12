@@ -21,12 +21,13 @@ class ManageTranslations
         return $files;
     }
     private static function getAllFiles($dir,$root='') {
+
             if(!$root){
                 $root=$dir;
             }
             $ffs = scandir($dir);
             foreach($ffs as $ff) {
-                if($ff != '.' && $ff != '..' && $ff!='datatable' && $ff!='tinymce') {
+                if($ff != '.' && $ff != '..' && $ff!='datatable' && $ff!='tinymce' && $ff!='Translate.php') {
                     if(is_dir($dir.'/'.$ff)) {
                         self::getAllFiles($dir.'/'.$ff, $dir);
                     }
@@ -34,10 +35,11 @@ class ManageTranslations
                         $f=explode('.',$ff);
                         $is_right_file=false;
                         foreach($f as $v){
+                            $v=strtolower($v);
                             if($v=='js' || $v=='php'){
                                 $is_right_file=true;
                             }
-                            if($v=='min' || $v=='xml' || $v=='Translate'){
+                            if($v=='min' || $v=='xml' || $v=='png' || $v=='jpg' || $v=='gif'){
                                 $is_right_file=false;
                                 break;
                             }

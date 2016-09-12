@@ -47,6 +47,7 @@ class Translate extends EditCSV
         }
 
     }
+
     protected function yandexTranslate($txt, $lang, $key){
         $url="https://translate.yandex.net/api/v1.5/tr.json/translate?key=".$key."&text=".urlencode($txt)."&lang=en-".$lang;
         $output = file_get_contents($url);
@@ -57,25 +58,25 @@ class Translate extends EditCSV
         return $txt;
     }
     public function translationFile(){
-        $words = $this->csv_to_array($this->_folder_path ."translations/". $this->_lang . '.csv');
+        $words = $this->csv_to_array("translations/". $this->_lang . '.csv');
         return $words;
     }
     public function getWords($key){
-        $translated_words=array();
-        $all_words=array_unique($this->learn_words);
-        if ($words = $this->csv_to_array($this->_folder_path . $this->_lang . '_learned.csv')) {
-            foreach($all_words as $k=>$v){
-                if(!isset($words[$v])){
-                    $translated_words[]=[$v,$this->yandexTranslate($v, $this->_lang, $key)];
-                }
-            }
-        }
-        else {
-            foreach ($all_words as $k => $v) {
-                $translated_words[]=[$v,$this->yandexTranslate($v, $this->_lang, $key)];
-            }
-        }
-        $this->convert_to_csv($translated_words,$this->_folder_path . $this->_lang . '_learned.csv');
+//        $translated_words=array();
+//        $all_words=array_unique($this->learn_words);
+//        if ($words = $this->csv_to_array($this->_lang . '_learned.csv')) {
+//            foreach($all_words as $k=>$v){
+//                if(!isset($words[$v])){
+//                    $translated_words[]=[$v,$this->yandexTranslate($v, $this->_lang, $key)];
+//                }
+//            }
+//        }
+//        else {
+//            foreach ($all_words as $k => $v) {
+//                $translated_words[]=[$v,$this->yandexTranslate($v, $this->_lang, $key)];
+//            }
+//        }
+//        $this->convert_to_csv($translated_words,$this->_folder_path . $this->_lang . '_learned.csv');
      }
 
     protected function translate($txt){
