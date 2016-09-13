@@ -4,6 +4,7 @@ if($_user['user_id'] && $is_show && isset($_GET['item']) && in_array($_GET['item
     $translate = new Translate(Registry::getInstance()->getRootFolder(), $_GET['item']);
     $file = $translate->translationFile();
     foreach($all_words as $val){
+        $val=$translate->removeExclam($val);
         if(!isset($file[$val])){
             $file[$val]="";
         }

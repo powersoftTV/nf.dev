@@ -39,6 +39,16 @@ class Translate extends EditCSV
             }
         }, $txt);
     }
+
+    public function removeExclam($txt){
+        $pattern_a = "/!!!_(.*?)_!!!/";
+        return preg_replace_callback($pattern_a, function ($matches) {
+            $words=str_replace('!!!_', '', $matches[0]);
+            $words=str_replace('_!!!', '', $words);
+            return $words;
+        }, $txt);
+    }
+
     public function words($txt){
         $pattern_a = "/!!!_(.*?)_!!!/";
         preg_match_all($pattern_a,$txt,$matches);
