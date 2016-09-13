@@ -15,8 +15,15 @@
 
     define('TIMEZONE', 'Asia/Yerevan');
 
-    $languages=array('en','ru','hy');
-    $front_languages=array('en','ru','hy');
+    $languages=array('en','ru','hy','fr','ka');
+        $lang_titles=array(
+            'en'=>'!!!_English_!!!',
+            'ru'=>'!!!_Russian_!!!',
+            'hy'=>'!!!_Armenian_!!!',
+            'fr'=>'!!!_French_!!!',
+            'ka'=>'!!!_Georgian_!!!',
+        );
+        $front_languages=array('en','ru','hy');
 
     $VERSION=1.02;
 	error_reporting(E_ALL);
