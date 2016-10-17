@@ -3,6 +3,12 @@
     function create_password($pwd){
         return md5(md5($pwd).'_'.md5($pwd));
     }
+    function show_lang($lng,$show_lng ){
+        if (version_compare(phpversion(), '5.3.0', '>')) {
+            return locale_get_display_language($lng, $show_lng);
+        }
+        else return $lng;
+    }
 
     function create_token(){
 		$alphabet='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';

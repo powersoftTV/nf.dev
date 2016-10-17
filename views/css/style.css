@@ -1,4 +1,9 @@
+ul{
+  list-style: none !important;
+}
+
 /* notifications */
+
 .alerts {
     margin: 20px auto;
     position: absolute;
@@ -145,7 +150,9 @@
   text-decoration: underline;
 }
 /* notification end */
-
+footer{
+  margin-top: 20px;
+}
 .modal-dialog{
    width: 400px;
 }

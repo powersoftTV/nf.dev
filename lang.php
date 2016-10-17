@@ -86,8 +86,12 @@ $_LANG["name"]["hy"]="Name";
 $_LANG["name"]["ru"]="Name";
 
 $_LANG["new"]["en"]="New";
-$_LANG["new"]["hy"]="New";
-$_LANG["new"]["ru"]="New";
+$_LANG["new"]["hy"]="Նոր";
+$_LANG["new"]["ru"]="Новая";
+
+$_LANG["edit_cat"]["en"]="Edit Category";
+$_LANG["edit_cat"]["hy"]="խմբագրել բաժինը";
+$_LANG["edit_cat"]["ru"]="Редактировать категорию";
 
 $_LANG["phone"]["en"]="Phone";
 $_LANG["phone"]["hy"]="Phone";
@@ -105,6 +109,10 @@ $_LANG["cancel"]["en"]="Cancel";
 $_LANG["cancel"]["hy"]="Անտեսել";
 $_LANG["cancel"]["ru"]="Отменить";
 
+$_LANG["updated"]["en"]="Updated";
+$_LANG["updated"]["hy"]="Թարմացվացը";
+$_LANG["updated"]["ru"]="Обновлено";
+
 $_LANG["ok"]["en"]="OK";
 $_LANG["ok"]["hy"]="OK";
 $_LANG["ok"]["ru"]="Ok";
@@ -117,6 +125,14 @@ $_LANG["send"]["en"]="Send";
 $_LANG["send"]["hy"]="Send";
 $_LANG["send"]["ru"]="Send";
 
+$_LANG["add"]["en"]="Add";
+$_LANG["add"]["hy"]="Ավելացնել";
+$_LANG["add"]["ru"]="Добавить";
+
+$_LANG["description"]["en"]="Description";
+$_LANG["description"]["hy"]="Բացատրություն";
+$_LANG["description"]["ru"]="Описание";
+
 $_LANG["forgot_pass_message"]["en"]="Enter the email address and we will send you instructions.";
 $_LANG["forgot_pass_message"]["hy"]="Enter the email address and we will send you instructions.";
 $_LANG["forgot_pass_message"]["ru"]="Enter the email address and we will send you instructions.";
@@ -125,7 +141,7 @@ $_LANG["check_email_message"]["en"]="This email is already registered.";
 $_LANG["check_email_message"]["hy"]="This email is already registered.";
 $_LANG["check_email_message"]["ru"]="This email is already registered.";
 
-$_LANG["check_username_message"]["en"]="This user name is already taken.";
+$_LANG["check_username_message"]["en"]="c";
 $_LANG["check_username_message"]["hy"]="This user name is already taken";
 $_LANG["check_username_message"]["ru"]="This user name is already taken";
 
@@ -317,5 +333,9 @@ $_LANG["category"]["hy"]="Բաժին";
 $_LANG["category"]["ru"]="Категория";
 
 /*-------------------------END OF HOME PAGE ----------------------------------*/
+
+$_LANG["check_category"]["en"]="This category is already exist.";
+$_LANG["check_category"]["hy"]="This category is already exist.";
+$_LANG["check_category"]["ru"]="Эта категория уже существует";
 
 ?>
