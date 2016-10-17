@@ -12,10 +12,6 @@
         var root_folder='<?php echo $root_folder; ?>';
     </script>
     <script src="<?=$root_folder?>views/scripts/jquery.min.js"></script>
-    <script src="<?=$root_folder?>views/scripts/angular.min.js"></script>
-    <script src="<?=$root_folder?>views/scripts/angular-route.min.js"></script>
-    <script src="<?=$root_folder?>views/scripts/angular-animate.min.js"></script>
-
 
 <!--    <script src="--><?//=$root_folder?><!--views/scripts/bootstrap-datepicker.min.js"></script>-->
 <?php if($_user['user_id'] && $act=='home'): ?>
@@ -31,7 +27,7 @@
 <script src="<?=$root_folder?>views/scripts/bootstrap.min.js"></script>
 <script src="<?=$root_folder?>views/scripts/bootstrap-select.min.js"></script>
 <script src="<?=$root_folder?>views/scripts/jquery-ui.min.js"></script>
-<script type="text/javascript" src="<?=$root_folder?>views/scripts/app.js?<?php echo $VERSION; ?>" ></script>
+
 <script type="text/javascript" src="<?=$root_folder?>views/scripts/script.js?<?php echo $VERSION; ?>" ></script>
 <?php if( file_exists(__DIR__.'/scripts/'.$act.'.js') ): ?>
     <script type="text/javascript" src="<?=$root_folder?>views/scripts/<?php echo $act; ?>.js?<?php echo $VERSION; ?>" ></script>

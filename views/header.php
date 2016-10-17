@@ -41,7 +41,7 @@
     <div class="container">
         <div class="navbar-header">
             <?php if($_user['user_id']){ ?>
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarCollapse">
+            <button type="button" class="navbar-toggle registered" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -53,7 +53,7 @@
             <?php } ?>
             <a class="navbar-brand" href="#">!!!_Company Name_!!!</a>
             <?php if($_user['user_id']){ ?>
-            <button  type="button" class="btn btn-primary me_btn text-right"><div><span class="glyphicon glyphicon-user"></span> <?php echo $_user['username']; ?></div><small><?php echo $_user['group_name']; ?></small></button>
+            <button  type="button" class="btn btn-primary me_btn text-right registered"><div><span class="glyphicon glyphicon-user"></span> <?php echo $_user['username']; ?></div><small><?php echo $_user['group_name']; ?></small></button>
             <?php } ?>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -87,7 +87,7 @@
         else{ ?>
             <div class="collapse navbar-collapse" id="navbarCollapse">
              <ul class="nav navbar-nav navbar-right">
-                <li><button data-toggle="modal" data-target="#sign-up-modal" type="button" class="btn btn-primary signup_btn"><span class="glyphicon glyphicon-user"></span> !!!_Sign Up_!!!</button></li>
+                <li><button data-toggle="modal" data-target="#sign-up-modal" type="button" class="btn btn-primary signup_btn "><span class="glyphicon glyphicon-user"></span> !!!_Sign Up_!!!</button></li>
         
             </ul>
             </div>

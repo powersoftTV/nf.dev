@@ -1,23 +1,17 @@
-var nv = angular.module('nv',[
-    'ngRoute',
-    'langController'
-]);
-nv.config(function($routeProvider, $locationProvider) {
-    $locationProvider.html5Mode({
-        enabled: true,
-        requireBase: false
+$('.lngbtn').click(function(e) {
+    $.ajax({
+        type: "POST",
+        url: ajax+'get-words'+'&item='+$(this).data('language')
+    }).done(function(msg){
+        if(msg) {
+            var data = JSON.parse(msg);
+            var final_str='<ul>';
+            $.each(data, function(k,v){
+                final_str+='<li class="words_list"><div class="row"><div class="col-sm-4">'+k+'</div><div class="col-sm-4"><a href="">'+v+'</a></div></div></li>';
+            });
+            final_str+='</ul>';
+            $('.translations').html(final_str);
+        }
+        else location.reload();
     });
 });
-
-var langController= angular.module('langController',[]);
-langController.controller("GetWords", function($scope, $http, $location) {
-        $scope.words = {};
-        $scope.words.doClick = function(item) {
-            var responsePromise = $http.get(ajax+'get-words'+'&item='+item);
-            responsePromise.success(function(data, status, headers, config) {
-               $scope.words.response = data;
-               $location.hash(item);
-               //history.pushState(1,item);
-            });
-        }
-} )

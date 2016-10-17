@@ -20,6 +20,6 @@
     else{ 
         include_once 'views/popups/new_story.php'; ?>
         <div class="container">
-            <div class="button_wrapper"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#new_story_popup">!!!_New Story_!!!</button></div>
+            <div class="button_wrapper"><button type="button" class="btn btn-primary registered" data-toggle="modal" data-target="#new_story_popup">!!!_New Story_!!!</button></div>
         </div>
 <?php   }  ?>
