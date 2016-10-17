@@ -1,7 +1,7 @@
 $('.lngbtn').click(function(e) {
     $.ajax({
         type: "POST",
-        url: ajax+'get-words'+'&item='+$(this).data('language')
+        url: ajax+'get-words'+'&item='+$(this).data('language')+'&lang='+lang
     }).done(function(msg){
         if(msg) {
             var data = JSON.parse(msg);
