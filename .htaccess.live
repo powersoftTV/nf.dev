@@ -16,4 +16,4 @@ RewriteCond %{HTTP_HOST} ^(?:www\.)?(.*)$ [NC]
 #catch all pages
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ /new_nf/index.php?routs=$1&%{QUERY_STRING}
+RewriteRule ^(.*)$ /nf/index.php?routs=$1&%{QUERY_STRING}
