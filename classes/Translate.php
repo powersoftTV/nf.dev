@@ -90,7 +90,8 @@ class Translate extends EditCSV
      }
 
     protected function translate($txt){
-        if ($words = $this->csv_to_array($this->_folder_path . $this->_lang . '.csv')) {
+       // if ($words = $this->csv_to_array($this->_folder_path . $this->_lang . '.csv')) {
+            if ($words = $this->csv_to_array(__DIR__."/../translations/" . $this->_lang . '.csv')) {
                 if (isset($words[$txt]) && $words[$txt]) {
                     return $words[$txt];
                 }

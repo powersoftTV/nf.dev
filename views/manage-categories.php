@@ -15,7 +15,7 @@ include_once 'views/popups/edit_category.php';
             <?php if(count($front_languages)>1){ ?>
             <tr class="info">
                 <?php foreach($front_languages as $v){ ?>
-                    <th><?php echo show_lang($v,$lang ); ?></th>
+                    <th><?php echo $v; ?></th>
                 <?php } ?>
                     <th class="hidden">!!!_Updated_!!!</th>
             </tr>

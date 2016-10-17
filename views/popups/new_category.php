@@ -16,7 +16,7 @@
                             <label for="language">!!!_Language_!!!:</label>
                             <select class="selectpicker" name="fr_lang">
                                 <?php foreach($front_languages as $v){ ?>
-                                    <option value="<?php echo $v; ?>"><?php echo show_lang($v,$lang ); ?></option>
+                                    <option value="<?php echo $v; ?>"><?php echo $v; ?></option>
                                 <?php } ?>
                             </select>
                         </div>

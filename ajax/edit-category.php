@@ -6,7 +6,7 @@ if($_user['user_id'] && isset($_POST['data']) && $_POST['data'] && $is_show) {
     $data = json_decode($_POST['data'], true);
     if (isset($data['cat_lng'])) {
         $cat_lng = mysqli_real_escape_string($MV, htmlspecialchars(trim($data['cat_lng'])));
-        $lng=show_lang($cat_lng,$data['lang'] );
+        $lng=$cat_lng;
     }
     if (isset($data['cat_id'])) {
         $cat_id = mysqli_real_escape_string($MV, htmlspecialchars(trim($data['cat_id'])));
