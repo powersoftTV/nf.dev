@@ -20,8 +20,10 @@
         'en'=>'!!!_English_!!!',
         'ru'=>'!!!_Russian_!!!',
         'hy'=>'!!!_Armenian_!!!',
-
-
+        'fr'=>'!!!_French_!!!',
+	    
+	    
+        'ka'=>'!!!_Georgian_!!!',
     );
     $front_languages=array('en','ru','hy');
 
